@@ -1,10 +1,9 @@
 import { React, useState } from "react";
 import { Route, Redirect } from "react-router-dom";
-import Navigation from "../src/components/navigation/Navigation";
-import Home from "../src/components/home/Home";
-import SignUp from "../src/components/signup/SignUp";
-import SignIn from "../src/components/signin/SignIn";
-// import './App.css';
+import Layout from "./components/shared/layout/Layout";
+import Home from "../src/screens/home/Home";
+import SignUp from "../src/screens/signup/SignUp";
+import SignIn from "../src/screens/signin/SignIn";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(
@@ -16,23 +15,24 @@ function App() {
   };
   return (
     <div className="App">
-      <Navigation
+      <Layout
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
         handleLogout={handleLogout}
-      />
-      <main>
-        <Route path="/home" exact component={Home} />
-        <Route path="/" exact render={() => <Redirect to="/home" />} />
-        <Route path="/signup" component={SignUp} />
-        <Route
-          path="/signin"
-          exact
-          render={() => {
-            return <SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} />;
-          }}
-        />
-      </main>
+      >
+        <Switch>
+          <Route path="/home" exact component={Home} />
+          <Route path="/" exact render={() => <Redirect to="/home" />} />
+          <Route path="/signup" component={SignUp} />
+          <Route
+            path="/signin"
+            exact
+            render={() => {
+              return <SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} />;
+            }}
+          />
+        </Switch>
+      </Layout>
     </div>
   );
 }

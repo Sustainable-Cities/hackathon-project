@@ -6,7 +6,7 @@ const { geocodeAddress } = require("../geocoding");
 
 const getLatLong = async (address) => {
   const geoCoded = await geocodeAddress(address);
-  return { lat: geoCoded.latitude, lng: geoCoded.longitude };
+  return { lat: geoCoded[0].latitude, lng: geoCoded[0].longitude };
 };
 
 module.exports = {

@@ -1,5 +1,5 @@
 import React from "react";
-import GoogleApiWrapper from "../googlemap/GoogleMap";
+import GoogleApiWrapper from "../../components/googlemap/GoogleMap";
 
 const Home = () => {
   return (
