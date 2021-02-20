@@ -15,10 +15,22 @@ module.exports = (sequelize, DataTypes) => {
   }
   Property.init(
     {
-      name: DataTypes.STRING,
-      type: DataTypes.STRING,
+      ranking: DataTypes.STRING,
+      owner_name: DataTypes.STRING,
+      lat: DataTypes.STRING,
+      lng: DataTypes.STRING,
+      prop_name: DataTypes.STRING,
+      prop_type: DataTypes.STRING,
+      prop_use: DataTypes.STRING,
+      year_built: DataTypes.STRING,
       address: DataTypes.STRING,
       zip: DataTypes.STRING,
+      area_sqft: DataTypes.STRING,
+      site_energy_usage_kbtu_sf: DataTypes.STRING,
+      total_energy_usage_kbtu: DataTypes.STRING,
+      percentage_elec: DataTypes.STRING,
+      ghg_intensity: DataTypes.STRING,
+      onsite_renewable_kwh: DataTypes.STRING,
     },
     {
       sequelize,
