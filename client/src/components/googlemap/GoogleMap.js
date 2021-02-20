@@ -14,7 +14,6 @@ export function GoogleMap(props) {
   const { google } = props;
 
   const onMarkerClick = (props, marker, e) => {
-    // console.log(props);
     setSelectedPlace(props);
     setActiveMarker(marker);
     setShowingInfoWindow(true);

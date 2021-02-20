@@ -1,7 +1,13 @@
 "use strict";
 const json = require("../data.json");
+const { geocodeAddress } = require("../geocoding");
 // const obj = JSON.parse(json);
 // console.log(json);
+
+const getLatLong = async (address) => {
+  const geoCoded = await geocodeAddress(address);
+  return { lat: geoCoded.latitude, lng: geoCoded.longitude };
+};
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -11,14 +17,15 @@ module.exports = {
       let obj = JSON.parse(el);
       // get lat and lon
       // set it too
+      const latLong = getLatLong(obj.address);
       arr.push({
         name: obj.property_name,
         type: obj.property_type,
         address: obj.address,
         zip: obj.ZIP,
+        lat: latLong.lat,
+        lng: latLong.lng,
       });
-      // lat:
-      // lon:
     });
     queryInterface.bulkInsert("properties", arr);
   },
