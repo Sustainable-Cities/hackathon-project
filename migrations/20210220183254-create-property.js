@@ -14,6 +14,12 @@ module.exports = {
       owner_name: {
         type: Sequelize.STRING,
       },
+      lat: {
+        type: Sequelize.STRING,
+      },
+      lon: {
+        type: Sequelize.STRING,
+      },
       prop_name: {
         type: Sequelize.STRING,
       },
