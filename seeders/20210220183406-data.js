@@ -1,16 +1,21 @@
 "use strict";
+const json = require("../data.json");
+const obj = JSON.parse(json);
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-     */
+    return obj.values().map((el) => {
+      // get lat and lon
+      // set it too
+      queryInterface.insertOne({
+        name: el.PropertyName,
+        type: el.PropertyType,
+        address: el.Address,
+        zip: el.ZIP,
+        // lat:
+        // lon:
+      });
+    });
   },
 
   down: async (queryInterface, Sequelize) => {
