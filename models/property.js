@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       ranking: DataTypes.STRING,
       owner_name: DataTypes.STRING,
       lat: DataTypes.STRING,
-      lon: DataTypes.STRING,
+      lng: DataTypes.STRING,
       prop_name: DataTypes.STRING,
       prop_type: DataTypes.STRING,
       prop_use: DataTypes.STRING,
