@@ -1,5 +1,11 @@
 const { User } = require("../models");
 
+const {
+  hashPassword,
+  passwordValid,
+  createToken,
+} = require("../middleware/index");
+
 const CreateUser = async (req, res) => {
   try {
     const { email, password } = req.body;
