@@ -1,12 +1,10 @@
 "use strict";
 const json = require("../data.json");
 const { geocodeAddress } = require("../geocoding");
-// const obj = JSON.parse(json);
-// console.log(json);
 
 const getLatLong = async (address) => {
   const geoCoded = await geocodeAddress(address);
-  return { lat: geoCoded.latitude, lng: geoCoded.longitude };
+  return { lat: geoCoded[0].latitude, lng: geoCoded[0].longitude };
 };
 
 module.exports = {
