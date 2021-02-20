@@ -4,6 +4,7 @@ import Navigation from "../src/components/navigation/Navigation";
 import Home from "../src/components/home/Home";
 import SignUp from "../src/components/signup/SignUp";
 import SignIn from "../src/components/signin/SignIn";
+// import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(
