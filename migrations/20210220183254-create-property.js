@@ -8,16 +8,46 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      ranking: {
         type: Sequelize.STRING,
       },
-      type: {
+      owner_name: {
+        type: Sequelize.STRING,
+      },
+      prop_name: {
+        type: Sequelize.STRING,
+      },
+      prop_type: {
+        type: Sequelize.STRING,
+      },
+      prop_use: {
+        type: Sequelize.STRING,
+      },
+      year_built: {
         type: Sequelize.STRING,
       },
       address: {
         type: Sequelize.STRING,
       },
       zip: {
+        type: Sequelize.STRING,
+      },
+      area_sqft: {
+        type: Sequelize.STRING,
+      },
+      site_energy_usage_kbtu_sf: {
+        type: Sequelize.STRING,
+      },
+      total_energy_usage_kbtu: {
+        type: Sequelize.STRING,
+      },
+      percentage_elec: {
+        type: Sequelize.STRING,
+      },
+      ghg_intensity: {
+        type: Sequelize.STRING,
+      },
+      onsite_renewable_kwh: {
         type: Sequelize.STRING,
       },
       createdAt: {
