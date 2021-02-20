@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 const Navigation = ({ loggedIn, handleLogout }) => {
   return (
     <div>
       <nav>
         <Link to="/home">
-          <Typography>Home</Typography>
+          <Button>Home</Button>
         </Link>
-        {!loggedIn && <Link to="/signin">Login</Link>}
-        {loggedIn && <button onClick={handleLogout}>Logout</button>}
+        {!loggedIn && (
+          <Link to="/signin">
+            <Button>Login</Button>
+          </Link>
+        )}
+        {loggedIn && <Button onClick={handleLogout}>Logout</Button>}
       </nav>
     </div>
   );
