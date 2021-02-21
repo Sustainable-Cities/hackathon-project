@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField"
+import logo from '../../assets/LogoHolder.png'
+import loginImg from '../../assets/login-image.jpg'
 import { __CreateUser } from "../../services/UserServices";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: '200',
     fontSize: '2em',
+    marginBottom: '1em'
   }
 }));
 
@@ -69,6 +71,7 @@ const SignUp = () => {
       <div className={classes.color}>
 
       <form className={classes.form} onSubmit={handleSubmit}>
+      <img src={logo} alt='logo' style={{width: '118px', height: '116px', marginBottom: '1em'}}/>
       <div className={classes.title}>Sign Up!</div>
         <input
           id="username"
@@ -109,13 +112,8 @@ const SignUp = () => {
           Sign Up
         </button>
       </form>
-      {/* <div className="qualification">Email must be unique</div>
-      <br />
-      <div className="qualification">
-        Password must be combination of at least 8 letters and numbers
-      </div> */}
           </div>
-      <div>image</div>
+          <img src={loginImg} alt='login image' style={{width: '50vw', height:'100%'}} />
     </div>
   );
 };
