@@ -7,7 +7,7 @@ const mapStyles = {
 };
 
 export function GoogleMap(props) {
-  const [markers, setMarkers] = useState([]);
+  const { markers } = props;
   const [activeMarker, setActiveMarker] = useState({});
   const [selectedPlace, setSelectedPlace] = useState({});
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
@@ -25,6 +25,8 @@ export function GoogleMap(props) {
       setActiveMarker(null);
     }
   };
+
+  console.log(props);
 
   return (
     <Map
@@ -59,5 +61,4 @@ export function GoogleMap(props) {
 
 export default GoogleApiWrapper({
   apiKey: `${process.env.REACT_APP_GOOGLEMAPS_KEY}`,
-  // markers: markers,
 })(GoogleMap);
