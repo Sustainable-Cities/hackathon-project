@@ -32,9 +32,11 @@ export default function NavLinks(props) {
       <Link className={classes.links} to="/favorites">
         <Button className={classes.buttons}>Favorites</Button>
       </Link>
-      <Button className={classes.buttons} onClick={handleLogout}>
-        Logout
-      </Button>
+      <Link className={classes.links}>
+        <Button className={classes.buttons} onClick={handleLogout}>
+          Logout
+        </Button>
+      </Link>
     </div>
   );
 

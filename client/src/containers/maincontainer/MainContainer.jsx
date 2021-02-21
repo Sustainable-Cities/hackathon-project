@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Map from "../../components/map/Map";
+import Favorites from "../../screens/favorites/Favorites";
 import SearchScreen from "../../screens/searchscreen/SearchScreen";
 import { __GetProperties } from "../../services/PropertiesServices";
 
@@ -23,24 +24,22 @@ export default function MainContainer({ loggedIn }) {
     <>
       <Switch>
         <Route exact path="/map">
-          {loggedIn ? (
-            <Map
-              properties={properties}
-              filteredProperties={filteredProperties}
-              setFilteredProperties={setFilteredProperties}
-            />
-          ) : (
-            <div>
-              Map will be here if you're logged in. You're logged out lol
-            </div>
-          )}
+          <Map
+            properties={properties}
+            filteredProperties={filteredProperties}
+            setFilteredProperties={setFilteredProperties}
+          />
         </Route>
-        <Route path="/">
-          <SearchScreen />
-          {/* on submit pushes to /map*/}
+        <Route exact path="/favorites">
+          <Favorites />
         </Route>
-
-        {/* Put in more routing here? - when do we show search component vs map component, vs favorites component. MainContainer will render components that need data from DB */}
+        <Route exact path="/">
+          <SearchScreen
+            properties={properties}
+            filteredProperties={filteredProperties}
+            setFilteredProperties={setFilteredProperties}
+          />
+        </Route>
       </Switch>
     </>
   );
