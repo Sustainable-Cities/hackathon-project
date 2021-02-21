@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navigation = ({ loggedIn, handleLogout }) => {
+export default function NavLeft({ loggedIn, handleLogout }) {
   const classes = useStyles();
   return (
     <>
@@ -46,6 +46,4 @@ const Navigation = ({ loggedIn, handleLogout }) => {
       </nav>
     </>
   );
-};
-
-export default Navigation;
+}

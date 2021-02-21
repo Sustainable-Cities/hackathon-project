@@ -5,12 +5,16 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
+  navlinks: {
+    display: "flex",
+    flexFlow: "row wrap",
+  },
+
   buttons: {
     width: "100%",
   },
   links: {
     textDecoration: "none",
-    width: "100%",
   },
 }));
 
@@ -18,27 +22,31 @@ export default function NavLinks(props) {
   const classes = useStyles();
   const { loggedIn, handleLogout } = props;
   const loggedInOptions = (
-    <>
-      <Button className={classes.buttons}>Map</Button>
-      <Button className={classes.buttons}>Favorites</Button>
-      <Button className={classes.buttons} onClick={handleLogout}>
-        Logout
-      </Button>
+    <div className={classes.navlinks}>
       <Link className={classes.links} to="/">
         <Button className={classes.buttons}>Home</Button>
       </Link>
-    </>
+      <Link className={classes.links} to="/map">
+        <Button className={classes.buttons}>Map</Button>
+      </Link>
+      <Link className={classes.links} to="/favorites">
+        <Button className={classes.buttons}>Favorites</Button>
+      </Link>
+      <Button className={classes.buttons} onClick={handleLogout}>
+        Logout
+      </Button>
+    </div>
   );
 
   const loggedOutOptions = (
-    <>
-      <Link className={classes.links} to="/signin">
+    <div className={classes.navlinks}>
+      <Link className={classes.links} to="/">
         <Button className={classes.buttons}>Login</Button>
       </Link>
       <Link className={classes.links} to="/">
         <Button className={classes.buttons}>Home</Button>
       </Link>
-    </>
+    </div>
   );
 
   return loggedIn ? loggedInOptions : loggedOutOptions;
