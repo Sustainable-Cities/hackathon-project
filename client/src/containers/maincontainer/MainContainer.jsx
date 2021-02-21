@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import GoogleApiWrapper from "../../components/googlemap/GoogleMap";
+import { __GetProperties } from "../../services/PropertiesServices";
 
 export default function MainContainer() {
   const [properties, setProperties] = useState([]);
@@ -8,7 +9,16 @@ export default function MainContainer() {
   const [filteredProperties, setFilteredProperties] = useState([]);
 
   //API CALLS GO HERE
+  const fetchProperties = async () => {
+    const data = await __GetProperties();
+    setProperties(data);
+  };
 
+  useEffect(() => {
+    fetchProperties();
+  }, []);
+
+  
   return (
     <>
       <GoogleApiWrapper markers={filteredProperties} />
