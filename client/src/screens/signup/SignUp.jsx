@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import logo from "../../assets/LogoHolder.png";
 import loginImg from "../../assets/login-image.jpg";
 import { __CreateUser } from "../../services/UserServices";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   signUp: {
@@ -75,7 +76,7 @@ const SignUp = () => {
             alt="logo"
             style={{ width: "118px", height: "116px", marginBottom: "1em" }}
           />
-          <div className={classes.title}>Sign Up!</div>
+          <Typography className={classes.title}>Sign Up!</Typography>
           <input
             id="username"
             onChange={handleChange}

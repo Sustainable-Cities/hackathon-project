@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import logo from "../../assets/LogoHolder.png";
 import loginImg from "../../assets/login-image.jpg";
 import { __LoginUser } from "../../services/UserServices";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   login: {
@@ -77,7 +78,9 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
             alt="logo"
             style={{ width: "118px", height: "116px", marginBottom: "1em" }}
           />
-          <div className={classes.title}>Log in with your email</div>
+          <Typography className={classes.title}>
+            Log in with your email
+          </Typography>
           <input
             id="email"
             onChange={handleChange}
@@ -99,9 +102,9 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
           <button type="submit" className={classes.button}>
             Log In
           </button>
-          <div className="registrationTitle">
+          <Typography className="registrationTitle">
             Don't have an account? <Link to="/signup">Sign up here</Link>
-          </div>
+          </Typography>
         </form>
       </div>
       <img
