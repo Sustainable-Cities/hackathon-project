@@ -7,6 +7,8 @@ export default function MainContainer() {
   const [search, setSearch] = useState("");
   const [filteredProperties, setFilteredProperties] = useState([]);
 
+  //API CALLS GO HERE
+
   return (
     <>
       <GoogleApiWrapper markers={filteredProperties} />
