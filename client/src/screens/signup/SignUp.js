@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { __CreateUser, __LoginUser } from "../../services/UserServices";
 
-const SignUp = (props) => {
+const SignUp = () => {
   const initialState = {
     username: "",
     email: "",
@@ -16,7 +16,7 @@ const SignUp = (props) => {
     event.preventDefault();
     if (formState.password === formState.re_password) {
       await __CreateUser(formState);
-      //   props.history.push("/home");
+      history.push("/signin");
     }
     setFormState(initialState);
   };
