@@ -8,9 +8,10 @@ const {
 
 const CreateUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
     const password_digest = await hashPassword(password);
     const user = await User.create({
+      user_name: username,
       email: email,
       password_digest: password_digest,
     });

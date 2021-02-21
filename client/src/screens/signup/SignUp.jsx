@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -21,13 +20,10 @@ const SignUp = () => {
   const [formState, setFormState] = useState(initialState);
   const handleSubmit = (event) => {
     event.preventDefault();
-    Axios({
-      url: "https://st6.herokuapp.com/users/",
-      method: "POST",
-      data: formState,
-    }).then(() => {
-      history.push("/signin");
-    });
+    if (formState.password === formState.re_password) {
+      await __CreateUser(formState);
+      //   props.history.push("/home");
+    }
     setFormState(initialState);
   };
   const handleChange = (event) => {
