@@ -18,7 +18,7 @@ export default function MainContainer() {
     fetchProperties();
   }, []);
 
-  
+
   return (
     <>
       <GoogleApiWrapper markers={filteredProperties} />
