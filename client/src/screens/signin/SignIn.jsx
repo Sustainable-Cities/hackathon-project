@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { __LoginUser } from "../../services/UserServices";
 
 const useStyles = makeStyles((theme) => ({
   login: {
@@ -16,7 +16,7 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
     password: "",
   };
   const [formState, setFormState] = useState(initialState);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Axios({
     //   url: "https://st6.herokuapp.com/token/login/",
