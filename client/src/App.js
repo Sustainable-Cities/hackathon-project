@@ -16,28 +16,28 @@ function App() {
     setLoggedIn(false);
   };
   return (
-    <div className="App">
-      <ThemeProvider theme={mainTheme}>
-        <Layout
-          loggedIn={loggedIn}
-          setLoggedIn={setLoggedIn}
-          handleLogout={handleLogout}
-        >
-          <Switch>
-            <Route path="/home" exact component={Home} />
-            <Route path="/" exact render={() => <Redirect to="/home" />} />
-            <Route path="/signup" component={SignUp} />
-            <Route
-              path="/signin"
-              exact
-              render={() => {
-                return <SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} />;
-              }}
-            />
-          </Switch>
-        </Layout>
-      </ThemeProvider>
-    </div>
+    // <div className="App">
+    <ThemeProvider theme={mainTheme}>
+      <Layout
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        handleLogout={handleLogout}
+      >
+        <Switch>
+          <Route path="/home" exact component={Home} />
+          <Route path="/" exact render={() => <Redirect to="/home" />} />
+          <Route path="/signup" component={SignUp} />
+          <Route
+            path="/signin"
+            exact
+            render={() => {
+              return <SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} />;
+            }}
+          />
+        </Switch>
+      </Layout>
+    </ThemeProvider>
+    // </div>
   );
 }
 
