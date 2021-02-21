@@ -10,18 +10,29 @@ import { mainTheme } from "../../styles/MaterialUITheme";
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "absolute",
-    border: "2px solid hotpink",
-    left: 0,
-    top: "8vh",
+    // border: "2px solid hotpink",
+    left: "2vw",
+    top: "9vh",
     zIndex: 1000,
+    display: "grid",
+    gridTemplateAreas: `"1 1 1" "2 3 4"`,
+    gridRowGap: "1vh",
+    gridColumnGap: "1vw",
   },
-  textInput: { backgroundColor: `${mainTheme.primary}` },
-  selectInput: {},
+  textInput: {
+    background: `#F5F5F5`,
+    width: "80vw",
+    gridColumnStart: 1,
+    gridColumnEnd: 4,
+  },
+  selectInput: { background: "#F5F5F5" },
 }));
 
 export default function Search({ properties, setFilteredProperties }) {
   const classes = useStyles();
   const [search, setSearch] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const [propertySize, setPropertySize] = useState("");
 
   const results = properties.filter((item) =>
     item.address.toLowerCase().includes(search.toLowerCase())
@@ -36,16 +47,14 @@ export default function Search({ properties, setFilteredProperties }) {
     <div className={classes.search}>
       <TextField
         className={classes.textInput}
-        variant="filled"
+        variant="outlined"
         onChange={handleChange}
         value={search}
         InputProps={{ endAdornment: <SearchIcon /> }}
       />
-      <InputLabel id="label">Age</InputLabel>
-      <Select labelId="label" id="select" value="20">
-        <MenuItem value="10">Ten</MenuItem>
-        <MenuItem value="20">Twenty</MenuItem>
-      </Select>
+      <Select className={classes.selectInput} variant="outlined"></Select>
+      <Select className={classes.selectInput} variant="outlined"></Select>
+      <Select className={classes.selectInput} variant="outlined"></Select>
     </div>
   );
 }
