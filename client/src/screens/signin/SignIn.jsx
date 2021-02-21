@@ -1,12 +1,46 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField"
 import { __LoginUser } from "../../services/UserServices";
 
 const useStyles = makeStyles((theme) => ({
   login: {
     marginTop: "8vh",
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr'
   },
+  color: {
+    backgroundColor: '#E5E5E5',
+    height: '100vh'
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: '10%'
+  },
+  button: {
+    backgroundColor: '#0039A9',
+    color: 'white',
+    margin: '1em 2em',
+    borderRadius: '1em',
+    width: '30%',
+    height: '2.5em'
+  },
+  text: {
+    height: '2.5em',
+    width: '30%',
+    margin: '.5em',
+    border: '1px solid transparent',
+    borderRadius: '1em',
+    backgroundColor: 'white',
+    boxShadow: 'inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF',
+  },
+  title: {
+    fontWeight: '200',
+    fontSize: '2em',
+  }
 }));
 
 const SignIn = ({ loggedIn, setLoggedIn }) => {
@@ -18,17 +52,9 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
   const [formState, setFormState] = useState(initialState);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Axios({
-    //   url: "https://st6.herokuapp.com/token/login/",
-    //   method: "POST",
-    //   data: formState,
-    // }).then((res) => {
-    //   localStorage.setItem("token", res.data.auth_token);
-    //   setLoggedIn(true);
-    // });
     const data = await __LoginUser(formState);
-    localStorage.setItem("token", data.user.id);
-    setLoggedIn(true);
+    localStorage.setItem("token", data.token);
+    setLoggedIn(data.user);
 
     setFormState(initialState);
   };
@@ -40,38 +66,34 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
   }
   return (
     <div className={classes.login}>
-      <div className="loginTitle">Login Below:</div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email" className="emailLabel">
-          Enter Email:{" "}
-        </label>
+      <div className={classes.color}>
+      <form className={classes.form} onSubmit={handleSubmit}>
+      <div className={classes.title}>Log in with your email</div>
         <input
           id="email"
           onChange={handleChange}
           value={formState.email}
           placeholder="Email"
-          className="emailInput"
-        />{" "}
+          type='email'
+          className={classes.text}
+          />
         <br />
-        <label htmlFor="password" className="passwordLabel">
-          Enter Password:{" "}
-        </label>
         <input
           id="password"
           onChange={handleChange}
           value={formState.password}
           placeholder="Password"
-          className="passwordInput"
-        />
-        <button type="submit" className="loginSubmit hvr-grow">
-          Submit
+          className={classes.text}
+          type='password'
+          />
+          <br />
+        <button type="submit" className={classes.button}>
+          Log In
         </button>
+      <div className="registrationTitle">Don't have an account? <Link to='/signup'>Signup here</Link></div>
       </form>
-      <div className="registrationTitle">Not Signed up? Register Below:</div>
-      <br />
-      <Link to="/signup" className="registration hvr-grow">
-        Register
-      </Link>
+          </div>
+      <div>Picture</div>
     </div>
   );
 };
