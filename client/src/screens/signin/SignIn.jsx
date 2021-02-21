@@ -19,14 +19,6 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
   const [formState, setFormState] = useState(initialState);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Axios({
-    //   url: "https://st6.herokuapp.com/token/login/",
-    //   method: "POST",
-    //   data: formState,
-    // }).then((res) => {
-    //   localStorage.setItem("token", res.data.auth_token);
-    //   setLoggedIn(true);
-    // });
     const data = await __LoginUser(formState);
     localStorage.setItem("token", data.user.id);
     setLoggedIn(true);
