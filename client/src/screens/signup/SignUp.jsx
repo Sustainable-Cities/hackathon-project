@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { __CreateUser } from "../../services/UserServices";
 
 const useStyles = makeStyles((theme) => ({
   signUp: {
@@ -18,7 +19,7 @@ const SignUp = () => {
   };
   const history = useHistory();
   const [formState, setFormState] = useState(initialState);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (formState.password === formState.re_password) {
       await __CreateUser(formState);
