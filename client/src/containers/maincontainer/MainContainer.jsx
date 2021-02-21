@@ -33,7 +33,7 @@ export default function MainContainer({ loggedIn }) {
         <Route exact path="/favorites">
           <Favorites />
         </Route>
-        <Route exact path="/">
+        <Route path="/">
           <SearchScreen
             properties={properties}
             filteredProperties={filteredProperties}
