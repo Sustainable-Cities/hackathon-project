@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    alignItems: "center",
   },
 }));
 
