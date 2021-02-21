@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField"
 import { __CreateUser } from "../../services/UserServices";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +38,7 @@ const SignUp = () => {
         <label htmlFor="username" className="usernameLabel">
           Enter Username:{" "}
         </label>
-        <input
+        <TextField
           id="username"
           onChange={handleChange}
           value={formState.username}
@@ -48,33 +49,36 @@ const SignUp = () => {
         <label htmlFor="email" className="registrationEmailLabel">
           Enter Email:{" "}
         </label>
-        <input
+        <TextField
           id="email"
           onChange={handleChange}
           value={formState.email}
           placeholder="Email"
+          type='email'
           className="registrationEmailInput"
         />
         <br />
         <label htmlFor="password" className="registrationPasswordLabel">
           Enter Password:{" "}
         </label>
-        <input
+        <TextField
           id="password"
           onChange={handleChange}
           value={formState.password}
           placeholder="Password"
+          type='password'
           className="registrationPasswordInput"
         />
         <br />
         <label htmlFor="re_password" className="re_passwordLabel">
           Confirm Password:{" "}
         </label>
-        <input
+        <TextField
           id="re_password"
           onChange={handleChange}
           value={formState.re_password}
           placeholder="Confirm Password"
+          type='password'
           className="re_passwordInput"
         />
         <button type="submit" className="registrationFormSubmit hvr-grow">

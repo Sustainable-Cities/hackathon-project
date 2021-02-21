@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField"
 import { __LoginUser } from "../../services/UserServices";
 
 const useStyles = makeStyles((theme) => ({
@@ -45,23 +46,25 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
         <label htmlFor="email" className="emailLabel">
           Enter Email:{" "}
         </label>
-        <input
+        <TextField
           id="email"
           onChange={handleChange}
           value={formState.email}
           placeholder="Email"
+          type='email'
           className="emailInput"
         />{" "}
         <br />
         <label htmlFor="password" className="passwordLabel">
           Enter Password:{" "}
         </label>
-        <input
+        <TextField
           id="password"
           onChange={handleChange}
           value={formState.password}
           placeholder="Password"
           className="passwordInput"
+          type='password'
         />
         <button type="submit" className="loginSubmit hvr-grow">
           Submit

@@ -29,7 +29,7 @@ function App() {
             <SignUp />
           </Route>
           <Route exact path="/">
-            {loggedIn ? <Home /> : <SignIn />}
+            {loggedIn ? <Home /> : <SignIn setLoggedIn={setLoggedIn} />}
           </Route>
         </Switch>
       </Layout>
