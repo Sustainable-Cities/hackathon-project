@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100vw",
     height: "80vh",
-    marginLeft: "15vw",
+    marginTop: "8vh",
   },
 }));
 
@@ -18,11 +18,6 @@ const Home = (props) => {
   return (
     <div className={classes.root}>
       <MainContainer loggedIn={loggedIn} />
-
-      {/* Show something different on Homepage when logged in vs when logged out, renders main container always for now 
-        when logged out - Login / SignUp nav links
-        when logged in - search
-        */}
     </div>
   );
 };

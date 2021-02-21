@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 
 const mapStyles = {
-  width: "85vw",
-  height: "100vh",
+  width: "100vw",
+  height: "90%",
 };
 
 export function GoogleMap(props) {
@@ -12,6 +12,11 @@ export function GoogleMap(props) {
   const [selectedPlace, setSelectedPlace] = useState({});
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
   const { google } = props;
+
+  const mapTypeControlOptions = {
+    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+    position: google.maps.ControlPosition.BOTTOM_LEFT,
+  };
 
   const onMarkerClick = (props, marker, e) => {
     setSelectedPlace(props);
@@ -35,6 +40,9 @@ export function GoogleMap(props) {
         lat: 42.3601,
         lng: -71.0589,
       }}
+      mapTypeControlOptions={mapTypeControlOptions}
+      streetViewControl={false}
+      fullscreenControl={false}
     >
       {markers.map((marker, index) => (
         <Marker
