@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { mainTheme } from "./styles/MaterialUITheme";
@@ -6,6 +6,7 @@ import Layout from "./components/shared/layout/Layout";
 import Home from "../src/screens/home/Home";
 import SignUp from "../src/screens/signup/SignUp.jsx";
 import SignIn from "../src/screens/signin/SignIn.jsx";
+import { __CheckSession } from "./services/UserServices";
 
 function App() {
   const history = useHistory();
@@ -15,6 +16,14 @@ function App() {
     setLoggedIn(null);
     history.push("/");
   };
+  useEffect(() => {
+    const handleVerify = async () => {
+      const userData = await __CheckSession();
+      setLoggedIn(userData);
+    };
+    handleVerify();
+  }, []);
+
   return (
     <ThemeProvider theme={mainTheme}>
       <Layout
