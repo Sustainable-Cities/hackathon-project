@@ -5,7 +5,9 @@ const { geocodeAddress } = require("../geocoding");
 const getLatLong = async (address) => {
   const geoCoded = await geocodeAddress(address);
   console.log(geoCoded);
-  return { lat: geoCoded[0].latitude, lng: geoCoded[0].longitude };
+  if (geoCoded.length > 0) {
+    return { lat: geoCoded[0].latitude, lng: geoCoded[0].longitude };
+  }
 };
 
 module.exports = {
@@ -18,8 +20,8 @@ module.exports = {
       arr.push({
         ranking: obj.customer_rank,
         owner_name: obj.owner,
-        lat: latLong.lat,
-        lng: latLong.lng,
+        lat: latLong ? latLong.lat : null,
+        lng: latLong ? latLong.lng : null,
         prop_name: obj.property_name,
         prop_type: obj.property_type,
         prop_use: obj.property_uses,
@@ -27,10 +29,10 @@ module.exports = {
         address: obj.address,
         zip: obj.ZIP,
         area_sqft: obj.gross_area_sqft,
-        // site_energy_usage_kbtu_sf: obj.site_energy_usage_kBTU / sf,
+        site_energy_usage_kbtu_sf: obj.site_energy_usage_kBTU_sf,
         total_energy_usage_kbtu: obj.total_site_energy_kBTU,
         percentage_elec: obj.percentage_electricity,
-        // ghg_intensity: GHG_intensity_kgCO2 / sf,
+        ghg_intensity: obj.GHG_intensity_kgCO2_sf,
         onsite_renewable_kwh: obj.onsite_renewable_kWh,
       });
     }
