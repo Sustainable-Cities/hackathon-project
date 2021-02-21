@@ -12,7 +12,6 @@ export default function Map({
       <Search
         properties={properties}
         setFilteredProperties={setFilteredProperties}
-        className={classes.search}
       />
       <GoogleApiWrapper markers={filteredProperties} />
     </div>
