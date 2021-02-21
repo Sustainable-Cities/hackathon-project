@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField"
+import logo from '../../assets/LogoHolder.png'
+import loginImg from '../../assets/login-image.jpg'
 import { __LoginUser } from "../../services/UserServices";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: '200',
     fontSize: '2em',
+    marginBottom: '1em'
   }
 }));
 
@@ -68,6 +70,7 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
     <div className={classes.login}>
       <div className={classes.color}>
       <form className={classes.form} onSubmit={handleSubmit}>
+        <img src={logo} alt='logo' style={{width: '118px', height: '116px', marginBottom: '1em'}}/>
       <div className={classes.title}>Log in with your email</div>
         <input
           id="email"
@@ -90,10 +93,10 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
         <button type="submit" className={classes.button}>
           Log In
         </button>
-      <div className="registrationTitle">Don't have an account? <Link to='/signup'>Signup here</Link></div>
+      <div className="registrationTitle">Don't have an account? <Link to='/signup'>Sign up here</Link></div>
       </form>
           </div>
-      <div>Picture</div>
+      <img src={loginImg} alt='login image' style={{width: '50vw', height:'100%'}} />
     </div>
   );
 };
