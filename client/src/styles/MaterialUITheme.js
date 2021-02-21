@@ -11,7 +11,7 @@ export const mainTheme = createMuiTheme({
   },
   typography: {
     fontFamily: [
-      "Mulish",
+      "Montserrat",
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',
