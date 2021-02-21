@@ -1,6 +1,7 @@
-import Axios from "axios";
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+
+import { __LoginUser } from "../../services/UserServices";
 
 const SignIn = ({ loggedIn, setLoggedIn }) => {
   const initialState = {
@@ -8,16 +9,20 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
     password: "",
   };
   const [formState, setFormState] = useState(initialState);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    Axios({
-      url: "https://st6.herokuapp.com/token/login/",
-      method: "POST",
-      data: formState,
-    }).then((res) => {
-      localStorage.setItem("token", res.data.auth_token);
-      setLoggedIn(true);
-    });
+    // Axios({
+    //   url: "https://st6.herokuapp.com/token/login/",
+    //   method: "POST",
+    //   data: formState,
+    // }).then((res) => {
+    //   localStorage.setItem("token", res.data.auth_token);
+    //   setLoggedIn(true);
+    // });
+    const data = await __LoginUser(formState);
+    localStorage.setItem("token", data.user.id);
+    setLoggedIn(true);
+
     setFormState(initialState);
   };
   const handleChange = (event) => {
