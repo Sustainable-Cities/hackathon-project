@@ -26,8 +26,6 @@ export function GoogleMap(props) {
     }
   };
 
-  console.log(props);
-
   return (
     <Map
       google={google}

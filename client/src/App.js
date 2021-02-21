@@ -24,7 +24,9 @@ function App() {
         handleLogout={handleLogout}
       >
         <Switch>
-          <Route path="/home" exact component={Home} />
+          <Route path="/home" exact>
+            <Home loggedIn={loggedIn} />
+          </Route>
           <Route path="/" exact render={() => <Redirect to="/home" />} />
           <Route path="/signup" component={SignUp} />
           <Route

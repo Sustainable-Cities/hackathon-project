@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import GoogleApiWrapper from "../../components/googlemap/GoogleMap";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Route, Switch } from "react-router-dom";
+import MainContainer from "../../containers/maincontainer/MainContainer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,17 +10,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = () => {
+const Home = (props) => {
+  const { loggedIn } = props;
   const classes = useStyles();
-  const [properties, setProperties] = useState([]);
-  const [search, setSearch] = useState("");
-  const [filteredProperties, setFilteredProperties] = useState([]);
 
   return (
     <div className={classes.root}>
-      <GoogleApiWrapper markers={filteredProperties} />
+      <MainContainer />
 
-      {/* Put in more routing here? - when do we show search component vs map component, vs favorites component. Basically making Home component a container for rendering data showing components */}
+      {/* Show something different on Homepage when logged in vs when logged out, renders main container always for now */}
     </div>
   );
 };
