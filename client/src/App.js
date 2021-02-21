@@ -6,7 +6,7 @@ import Layout from "./components/shared/layout/Layout";
 import Home from "../src/screens/home/Home";
 import SignUp from "../src/screens/signup/SignUp.jsx";
 import SignIn from "../src/screens/signin/SignIn.jsx";
-import { __CheckSession } from "./services/UserServices";
+import { __removeToken, __CheckSession } from "./services/UserServices";
 
 function App() {
   const history = useHistory();
@@ -14,6 +14,7 @@ function App() {
   const handleLogout = () => {
     localStorage.clear();
     setLoggedIn(null);
+    __removeToken();
     history.push("/");
   };
   useEffect(() => {
