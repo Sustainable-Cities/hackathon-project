@@ -1,6 +1,6 @@
 import React from "react";
-import GoogleApiWrapper from "../../components/googlemap/GoogleMap";
 import { makeStyles } from "@material-ui/core/styles";
+import MainContainer from "../../containers/maincontainer/MainContainer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,12 +10,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = () => {
+const Home = (props) => {
+  const { loggedIn } = props;
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
-      {/* <div>Home</div> */}
-      <GoogleApiWrapper />
+      <MainContainer />
+
+      {/* Show something different on Homepage when logged in vs when logged out, renders main container always for now */}
     </div>
   );
 };
