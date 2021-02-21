@@ -4,6 +4,7 @@ const { geocodeAddress } = require("../geocoding");
 
 const getLatLong = async (address) => {
   const geoCoded = await geocodeAddress(address);
+  console.log(geoCoded);
   return { lat: geoCoded[0].latitude, lng: geoCoded[0].longitude };
 };
 
@@ -11,9 +12,9 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     let arr = [];
     let val = Object.values(json);
-    val.map((el) => {
-      let obj = JSON.parse(el);
-      const latLong = getLatLong(obj.address);
+    for (let i = 0; i < 20; i++) {
+      let obj = JSON.parse(val[i]);
+      const latLong = await getLatLong(obj.address);
       arr.push({
         ranking: obj.customer_rank,
         owner_name: obj.owner,
@@ -21,8 +22,8 @@ module.exports = {
         lng: latLong.lng,
         prop_name: obj.property_name,
         prop_type: obj.property_type,
-        prop_use: obj.property_use,
-        year_built: obj.year_buit,
+        prop_use: obj.property_uses,
+        year_built: obj.year_built,
         address: obj.address,
         zip: obj.ZIP,
         area_sqft: obj.gross_area_sqft,
@@ -32,7 +33,7 @@ module.exports = {
         // ghg_intensity: GHG_intensity_kgCO2 / sf,
         onsite_renewable_kwh: obj.onsite_renewable_kWh,
       });
-    });
+    }
     await queryInterface.bulkInsert("properties", arr);
   },
 
