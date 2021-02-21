@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "../../assets/LogoHolder.png";
 import loginImg from "../../assets/login-image.jpg";
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SignIn = ({ loggedIn, setLoggedIn }) => {
   const classes = useStyles();
+  const history = useHistory();
   const initialState = {
     email: "",
     password: "",
@@ -58,6 +59,7 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
     const data = await __LoginUser(formState);
     localStorage.setItem("token", data.token);
     setLoggedIn(data.user);
+    history.push("/home");
 
     setFormState(initialState);
   };
