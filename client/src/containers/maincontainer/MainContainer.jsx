@@ -80,8 +80,8 @@ export default function MainContainer({ loggedIn }) {
       if (energyFromElectricity.length > 0) {
         //parse INTS
         //look for items where etc... is between range in string
-        const lower = parseInt(energyFromElectricity.split(" ")[0]);
-        const higher = parseInt(energyFromElectricity.split(" ")[2]);
+        const lower = parseInt(energyFromElectricity.split(" ")[0]) / 100;
+        const higher = parseInt(energyFromElectricity.split(" ")[2]) / 100;
         if (
           parseInt(item.percentage_elec) >= lower &&
           parseInt(item.percentage_elec) <= higher
