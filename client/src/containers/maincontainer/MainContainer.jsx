@@ -130,7 +130,7 @@ export default function MainContainer({ loggedIn }) {
           />
         </Route>
         <Route exact path="/favorites">
-          <Favorites />
+          <Favorites loggedIn={loggedIn} />
         </Route>
         <Route path="/">
           <SearchScreen
