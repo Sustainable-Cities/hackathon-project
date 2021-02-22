@@ -110,7 +110,7 @@ export default function SearchScreen({
   };
 
   return (
-    <div className={classes.color}>    
+    <div className={classes.color}>
       <form onSubmit={onSubmit} className={classes.form}>
         <Typography className={classes.title}>Find a Property</Typography>
         <TextField
