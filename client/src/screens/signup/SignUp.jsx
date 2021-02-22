@@ -60,7 +60,7 @@ const SignUp = () => {
     event.preventDefault();
     if (formState.password === formState.re_password) {
       await __CreateUser(formState);
-      history.push("/home");
+      history.push("/");
     }
     setFormState(initialState);
   };
