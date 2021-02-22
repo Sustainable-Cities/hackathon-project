@@ -29,27 +29,62 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FiltersMenu({ handleFilter, filters }) {
+const propSizeArr = [
+  "0 - 40000.0",
+  "40000.0 - 70000.0",
+  "70000.0 - 150000.0",
+  "1500000.0 - 5000000",
+];
+
+const energyUsage = [
+  "0 - 165000.0",
+  "165000.0 - 500000.0",
+  "500000.0 - 1600000.0",
+  "1600000.0 and 5000000",
+];
+
+const totalCarbon = ["0 - 3.0", "3.0 - 5.0", "5.0 - 7.0", "7.0 - 10"];
+
+const percentElec = ["0 - 25%", "25% - 50%", "50% - 75%", "75% - 100%"];
+
+function FiltersMenu({ handleFilter, filters }) {
   const classes = useStyles();
   return (
     <div className={classes.menu}>
       <div className={classes.selectContainer}>
+        <InputLabel id="propType">Property Type</InputLabel>
         <Select
+          labelId="propType"
           placeholder="Property Type"
           className={classes.selectInput}
           variant="outlined"
           name="propertyType"
           value={filters.propertyType}
           onChange={(e) => handleFilter(e)}
-        ></Select>
+        >
+          <MenuItem>fads</MenuItem>
+          <MenuItem>fadqrs</MenuItem>
+          <MenuItem>fadfdss</MenuItem>
+          <MenuItem>faaweds</MenuItem>
+        </Select>
+      </div>
+      <div className={classes.selectContainer}>
+        <InputLabel id="propSize">Property Size</InputLabel>
         <Select
+          labelId="propSize"
           placeholder="Property Size"
           className={classes.selectInput}
           variant="outlined"
           value={filters.propertySize}
           name="propertySize"
           onChange={(e) => handleFilter(e)}
-        ></Select>
+        >
+          {propSizeArr.map((item) => (
+            <MenuItem value={item}>{item}</MenuItem>
+          ))}
+        </Select>
+      </div>
+      <div className={classes.selectContainer}>
         <InputLabel id="has-renewables-dropdown-label">
           Has Renewables
         </InputLabel>
@@ -63,11 +98,11 @@ export default function FiltersMenu({ handleFilter, filters }) {
           value={filters.hasRenewables}
           onChange={(e) => handleFilter(e)}
         >
-          <MenuItem value={"y"}>Yes</MenuItem>
-          <MenuItem value={"n"}>No</MenuItem>
+          <MenuItem value="y">Yes</MenuItem>
+          <MenuItem value="n">No</MenuItem>
         </Select>
       </div>
-      <div>
+      <div className={classes.selectContainer}>
         <InputLabel id="total-energy-dropdown-label">
           Total Energy Usage
         </InputLabel>
@@ -80,11 +115,15 @@ export default function FiltersMenu({ handleFilter, filters }) {
           name="totalEnergyUsage"
           value={filters.totalEnergyUsage}
           onChange={(e) => handleFilter(e)}
-        ></Select>
+        >
+          {energyUsage.map((item) => (
+            <MenuItem value={item}>{item}</MenuItem>
+          ))}
+        </Select>
       </div>
-      <div>
+      <div className={classes.selectContainer}>
         <InputLabel id="has-renewables-dropdown-label">
-          Has Renewables
+          Total Carbon Emissions
         </InputLabel>
         <Select
           placeholder="Total Carbon Emissions"
@@ -93,9 +132,13 @@ export default function FiltersMenu({ handleFilter, filters }) {
           name="totalCarbonEmissions"
           value={filters.totalCarbonEmissions}
           onChange={(e) => handleFilter(e)}
-        ></Select>
+        >
+          {totalCarbon.map((item) => (
+            <MenuItem value={item}>{item}</MenuItem>
+          ))}
+        </Select>
       </div>
-      <div>
+      <div className={classes.selectContainer}>
         <InputLabel id="energy-dropdown-label">
           % Energy From Electricity
         </InputLabel>
@@ -108,8 +151,14 @@ export default function FiltersMenu({ handleFilter, filters }) {
           name="energyFromElectricity"
           value={filters.energyFromElectricity}
           onChange={(e) => handleFilter(e)}
-        ></Select>
+        >
+          {percentElec.map((item) => (
+            <MenuItem value={item}>{item}</MenuItem>
+          ))}
+        </Select>
       </div>
     </div>
   );
 }
+
+export default FiltersMenu;

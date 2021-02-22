@@ -18,8 +18,6 @@ export default function MainContainer({ loggedIn }) {
     energyFromElectricity: "",
   });
 
-  console.log(properties);
-
   const searchResults = properties.filter(
     (item) => {
       const {
