@@ -60,7 +60,7 @@ export default function FiltersMenu({ handleFilter, filters }) {
           className={classes.selectInput}
           variant="outlined"
           name="hasRenewables"
-          // value={filters.hasRenewables}
+          value={filters.hasRenewables}
           onChange={(e) => handleFilter(e)}
         >
           <MenuItem value={"y"}>Yes</MenuItem>
@@ -78,7 +78,7 @@ export default function FiltersMenu({ handleFilter, filters }) {
           className={classes.selectInput}
           variant="outlined"
           name="totalEnergyUsage"
-          // value={filters.totalEnergyUsage}
+          value={filters.totalEnergyUsage}
           onChange={(e) => handleFilter(e)}
         ></Select>
       </div>
@@ -91,7 +91,7 @@ export default function FiltersMenu({ handleFilter, filters }) {
           className={classes.selectInput}
           variant="outlined"
           name="totalCarbonEmissions"
-          // value={filters.totalCarbonEmissions}
+          value={filters.totalCarbonEmissions}
           onChange={(e) => handleFilter(e)}
         ></Select>
       </div>
@@ -106,7 +106,7 @@ export default function FiltersMenu({ handleFilter, filters }) {
           className={classes.selectInput}
           variant="outlined"
           name="energyFromElectricity"
-          // value={filters.energyFromElectricity}
+          value={filters.energyFromElectricity}
           onChange={(e) => handleFilter(e)}
         ></Select>
       </div>

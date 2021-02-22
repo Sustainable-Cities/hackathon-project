@@ -56,7 +56,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchScreen() {
+// properties={properties}
+// filteredProperties={filteredProperties}
+// setFilteredProperties={setFilteredProperties}
+// filters={filters}
+// handleFilter={handleFilter}
+
+export default function SearchScreen({
+  properties,
+  filteredProperties,
+  setFilteredProperties,
+  filters,
+  handleFilter,
+}) {
   const classes = useStyles();
   const [search, setSearch] = useState("");
 
@@ -68,23 +80,13 @@ export default function SearchScreen() {
     <div className={classes.color}>
       <form className={classes.form}>
         <div className={classes.title}>Find a Property</div>
-        {/* <input
-          id="search"
-          onChange={handleChange}
-          value="search"
-          placeholder="Enter an address"
-          className={classes.text}
-        />
-        <button>
-          <SearchIcon className={classes.search} /> */}
-        {/* </button> */}
         <TextField
           margin="dense"
-          className={classes.textInput}
+          className={classes.text}
           name="address"
           variant="outlined"
-          // onChange={handleFilter}
-          // value={filters.address}
+          onChange={handleFilter}
+          value={filters.address}
           placeholder="Search by address"
           InputProps={{
             endAdornment: (
@@ -109,8 +111,8 @@ export default function SearchScreen() {
               className={classes.selectInput}
               variant="outlined"
               name="propertyType"
-              // value={filters.propertyType}
-              // onChange={(e) => handleFilter(e)}
+              value={filters.propertyType}
+              onChange={(e) => handleFilter(e)}
             >
               <MenuItem>fads</MenuItem>
               <MenuItem>fadqrs</MenuItem>
@@ -125,8 +127,8 @@ export default function SearchScreen() {
               className={classes.selectInput}
               variant="outlined"
               name="propertyType"
-              // value={filters.propertyType}
-              // onChange={(e) => handleFilter(e)}
+              value={filters.propertySize}
+              onChange={(e) => handleFilter(e)}
             ></Select>
           </div>
           <div>
@@ -136,30 +138,30 @@ export default function SearchScreen() {
               className={classes.selectInput}
               variant="outlined"
               name="propertyType"
-              // value={filters.propertyType}
-              // onChange={(e) => handleFilter(e)}
+              value={filters.hasRenewables}
+              onChange={(e) => handleFilter(e)}
             ></Select>
           </div>
           <div>
-            <InputLabel>Energy Usage</InputLabel>
+            <InputLabel>Total Energy Usage</InputLabel>
             <Select
               placeholder="Energy Usage"
               className={classes.selectInput}
               variant="outlined"
               name="propertyType"
-              // value={filters.propertyType}
-              // onChange={(e) => handleFilter(e)}
+              value={filters.totalEnergyUsage}
+              onChange={(e) => handleFilter(e)}
             ></Select>
           </div>
           <div>
-            <InputLabel>Carbon Emmissions</InputLabel>
+            <InputLabel>Total Carbon Emmissions</InputLabel>
             <Select
               placeholder="Carbon Emmissions"
               className={classes.selectInput}
               variant="outlined"
               name="propertyType"
-              // value={filters.propertyType}
-              // onChange={(e) => handleFilter(e)}
+              value={filters.totalCarbonEmissions}
+              onChange={(e) => handleFilter(e)}
             ></Select>
           </div>
           <div>
@@ -169,8 +171,8 @@ export default function SearchScreen() {
               className={classes.selectInput}
               variant="outlined"
               name="propertyType"
-              // value={filters.propertyType}
-              // onChange={(e) => handleFilter(e)}
+              value={filters.energyFromElectricity}
+              onChange={(e) => handleFilter(e)}
             ></Select>
           </div>
         </div>
