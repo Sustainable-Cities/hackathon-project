@@ -19,23 +19,25 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    height: "50%",
-    width: "75%",
+    height: "50vh",
+    width: "75vw",
     borderRadius: "50px",
     background: "white",
     marginTop: "2em",
+    padding: "1vh 1vw 1vh 1vw",
   },
   title: {
     fontWeight: "200",
     fontSize: "48px",
-    margin: "1em 0 0 1em",
+    // border: "2px none hotpink",
+    margin: "2vh 2vw 2vh 2vw",
   },
   text: {
     border: "2px solid #C4C4C4",
     borderRadius: "60px",
     height: "2.5em",
     width: "90%",
-    margin: "1em 0 0 4em",
+    margin: "auto 2vh",
   },
   search: {
     border: "2px solid #C4C4C4",
@@ -55,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     display: "grid",
     gridTemplateAreas: `'1 2' '3 4' '5 6'`,
-    margin: "1em 0 0 6em",
+    margin: "2vh 3vw",
   },
 }));
 

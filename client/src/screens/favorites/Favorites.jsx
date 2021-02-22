@@ -32,10 +32,6 @@ export default function Favorites({ loggedIn }) {
   const classes = useStyles();
   const [favs, setFavs] = useState([]);
 
-  useEffect(() => {
-    GetFavs();
-  }, []);
-
   // API CALL TO GET FAVS USING USER ID
   const GetFavs = async () => {
     const data = await __GetFavs(loggedIn.id);
@@ -44,7 +40,9 @@ export default function Favorites({ loggedIn }) {
       setFavs((prev) => [...prev, el.Property]);
     });
   };
-
+  useEffect(() => {
+    GetFavs();
+  }, []);
   return (
     <div className={classes.favs}>
       <h1>Your Favorites ({favs.length})</h1>
