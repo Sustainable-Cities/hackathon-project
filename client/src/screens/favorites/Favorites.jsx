@@ -38,8 +38,9 @@ export default function Favorites({ loggedIn }) {
   // API CALL TO GET FAVS USING USER ID
   const GetFavs = async () => {
     const data = await __GetFavs(loggedIn.id);
-    console.log(data);
-    setFavs(data);
+    data.forEach((el) => {
+      setFavs([...favs, el.Property]);
+    });
   };
 
   return (
@@ -51,17 +52,13 @@ export default function Favorites({ loggedIn }) {
           ? favs.map((el, i) => (
               <form key={i} className={classes.form}>
                 <div className={classes.text}>
-                  <Typography>{el.Property.prop_name}</Typography>
+                  <Typography>{el.prop_name}</Typography>
                   <Typography>
-                    {el.Property.address}, {el.zip}
+                    {el.address}, {el.zip}
                   </Typography>
-                  <Typography>
-                    Property Type: {el.Property.prop_type}
-                  </Typography>
-                  <Typography>{el.Property.ranking}</Typography>
-                  <Typography>
-                    {el.Property.area_sqft} area square feet
-                  </Typography>
+                  <Typography>Property Type: {el.prop_type}</Typography>
+                  <Typography>{el.ranking}</Typography>
+                  <Typography>{el.area_sqft} area square feet</Typography>
                 </div>
               </form>
             ))
