@@ -34,7 +34,7 @@ export default function PropertyCard(props) {
   const classes = useStyles();
   const { markers, marker, addFav } = props;
   const [iconToggle, setIconToggle] = useState(null);
-  const property = markers.filter(
+  const property = markers?.filter(
     (item) => item.address.toLowerCase() === marker.name.toLowerCase()
   )[0];
   return (
@@ -45,10 +45,11 @@ export default function PropertyCard(props) {
           <Typography variant="p">Boston, MA {property.zip}</Typography>
         </div>
         <Button
+          disabled
           className={classes.iconButton}
           onClick={(e) => {
-            console.log("clicked");
-            console.log(e);
+            // console.log("clicked");
+            // console.log(e);
             // setIconToggle(addFav(property.id));
             // console.log(iconToggle);
           }}
