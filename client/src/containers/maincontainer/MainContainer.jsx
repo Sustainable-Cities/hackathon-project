@@ -85,8 +85,8 @@ export default function MainContainer({ loggedIn }) {
         const lower = parseInt(energyFromElectricity.split(" ")[0]);
         const higher = parseInt(energyFromElectricity.split(" ")[2]);
         if (
-          parseInt(item.total_energy_usage_kbtu) >= lower &&
-          parseInt(item.total_energy_usage_kbtu) <= higher
+          parseInt(item.percentage_elec) >= lower &&
+          parseInt(item.percentage_elec) <= higher
         ) {
           return item;
         }
