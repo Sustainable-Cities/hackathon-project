@@ -26,7 +26,7 @@ export default function MoreDetails(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Typography></Typography>MORE DEETS
+        <Typography>TYPOGRAPHY</Typography>MORE DEETS
       </Paper>
     </div>
   );
