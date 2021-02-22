@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import Select from "@material-ui/core/Select";
@@ -57,6 +58,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const propArr = [
+  "Multifamily Housing",
+  "Office",
+  "Education - School",
+  "Government Facility",
+  "Hotel",
+  "Storage Facility",
+  "Residence Hall/Dormitory",
+  "Retail Store",
+  "Supermarket/Grocery Store",
+  "Manufacturing/Industrial Plant",
+  "Mixed Use Property",
+  "Mall",
+  "Dining",
+  "Other - Lodging/Residential",
+  "Other",
+];
+
 const propSizeArr = [
   "0 - 40000.0",
   "40000.0 - 70000.0",
@@ -83,10 +102,16 @@ export default function SearchScreen({
   handleFilter,
 }) {
   const classes = useStyles();
+  const history = useHistory();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    history.push("/map");
+  };
 
   return (
-    <div className={classes.color}>
-      <form className={classes.form}>
+    <div className={classes.color}>    
+      <form onSubmit={onSubmit} className={classes.form}>
         <Typography className={classes.title}>Find a Property</Typography>
         <TextField
           margin="dense"
@@ -98,13 +123,15 @@ export default function SearchScreen({
           placeholder="Search by address"
           InputProps={{
             endAdornment: (
-              <SearchIcon
-                style={{
-                  boxShadow: "inset 0 1px 2px rgba(0,0,0,.39)",
-                  borderRadius: "10px",
-                  width: "50px",
-                }}
-              />
+              <button type="submit">
+                <SearchIcon
+                  style={{
+                    boxShadow: "inset 0 1px 2px rgba(0,0,0,.39)",
+                    borderRadius: "10px",
+                    width: "50px",
+                  }}
+                />
+              </button>
             ),
             style: { height: "100%", padding: "0 14px", borderRadius: "20px" },
           }}
@@ -122,10 +149,9 @@ export default function SearchScreen({
               value={filters.propertyType}
               onChange={(e) => handleFilter(e)}
             >
-              <MenuItem>fads</MenuItem>
-              <MenuItem>fadqrs</MenuItem>
-              <MenuItem>fadfdss</MenuItem>
-              <MenuItem>faaweds</MenuItem>
+              {propArr.map((item) => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
             </Select>
           </div>
           <div>
