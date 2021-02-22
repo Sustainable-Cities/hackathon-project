@@ -34,7 +34,7 @@ export default function PropertyCard(props) {
   const classes = useStyles();
   const { markers, marker, addFav } = props;
   const [iconToggle, setIconToggle] = useState(null);
-  const property = markers.filter(
+  const property = markers?.filter(
     (item) => item.address.toLowerCase() === marker.name.toLowerCase()
   )[0];
   return (

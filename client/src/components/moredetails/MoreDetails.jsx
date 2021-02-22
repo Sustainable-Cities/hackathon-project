@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -32,6 +32,7 @@ export default function MoreDetails(props) {
   const [iconToggle, setIconToggle] = useState(false);
   const [isFav, setIsFav] = useState(false);
   const params = useParams();
+  const history = useHistory();
   const property = properties.filter(
     (item) => item.id === parseInt(params.id)
   )[0];
@@ -70,6 +71,7 @@ export default function MoreDetails(props) {
               onClick={(e) => {
                 addFav(params.id);
                 setIconToggle((prev) => !prev);
+                history.push("/favorites");
               }}
             >
               {isFav ? <StarIcon /> : <StarBorderIcon />}
