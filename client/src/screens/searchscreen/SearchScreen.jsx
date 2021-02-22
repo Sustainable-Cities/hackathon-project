@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "50px",
     background: "white",
     marginTop: "2em",
+    padding: "1vh 1vw 1vh 1vw",
   },
   title: {
     fontWeight: "200",
