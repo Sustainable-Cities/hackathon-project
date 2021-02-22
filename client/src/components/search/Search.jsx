@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
@@ -49,25 +49,28 @@ export default function Search({
   setFilteredProperties,
   filters,
   setFilters,
+  handleFilter,
 }) {
   const classes = useStyles();
-  const [search, setSearch] = useState("");
   const [moreFiltersToggle, setMoreFiltersToggle] = useState(false);
+  const [filterValues, setFilterValues] = useState([]);
+  const [filterKeys, setFilterKeys] = useState([]);
 
-  // const handleSearch = (e) => {
-  //   setSearch(e.target.value);
-  //   setFilteredProperties(searchResults);
-  // };
+  useEffect(() => {
+    setFilterValues(Object.values(filters));
+    setFilterKeys(Object.keys(filters));
+  }, [filters]);
 
-  const handleFilter = (e) => {
-    const { name, value } = e.target;
-    setFilters((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
   const handleClick = () => {
     setMoreFiltersToggle((prev) => !prev);
+  };
+  const deleteChip = (e) => {
+    const { name } = e.target;
+    console.log(e.target.name);
+    setFilters((prevState) => ({
+      ...prevState,
+      [name]: "",
+    }));
   };
 
   return (
@@ -93,25 +96,19 @@ export default function Search({
           style: { height: "100%", padding: "0 14px", borderRadius: "20px" },
         }}
       />
-      {/* {Object.values(filters).map((item) => {
-        item.length > 0 ? <Chip /> : null;
-      }) */}
-      {/* <Select
-        placeholder="Property Type"
-        className={classes.selectInput}
-        variant="outlined"
-        name="propertyType"
-        value={filters.propertyType}
-        onChange={(e) => handleFilter(e)}
-      ></Select>
-      <Select
-        placeholder="Property Size"
-        className={classes.selectInput}
-        variant="outlined"
-        value={filters.propertySize}
-        name="propertySize"
-        onChange={(e) => handleFilter(e)}
-      ></Select> */}
+      {filterValues.map((item, index) => {
+        console.log(filterKeys[index]);
+        return item.length > 0 ? (
+          <Chip
+            key={(item, index)}
+            name={`${filterKeys[index]}`}
+            label={`${item}`}
+            onDelete={(e) => {
+              deleteChip(e, index);
+            }}
+          />
+        ) : null;
+      })}
       <Button
         className={classes.button}
         onClick={handleClick}
