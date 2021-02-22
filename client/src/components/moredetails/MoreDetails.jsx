@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -13,6 +13,7 @@ import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import SquareFootIcon from "@material-ui/icons/SquareFoot";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import Card from "@material-ui/core/Card";
+import { __GetFavs } from "../../services/FavServices";
 
 // import propertyImage from "../../assets/propertyimage.jpg";
 
@@ -27,31 +28,49 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MoreDetails(props) {
   const classes = useStyles();
-  const { properties, addFav } = props;
-  const [iconToggle, setIconToggle] = useState(null);
+  const { properties, addFav, loggedIn } = props;
+  const [iconToggle, setIconToggle] = useState(false);
+  const [isFav, setIsFav] = useState(false);
   const params = useParams();
   const property = properties.filter(
     (item) => item.id === parseInt(params.id)
   )[0];
-  console.log(property);
+  // console.log(property);
+
+  useEffect(() => {
+    GetFavs();
+  }, [iconToggle]);
+
+  // API CALL TO GET FAVS USING USER ID
+  const GetFavs = async () => {
+    const data = await __GetFavs(loggedIn.id);
+    const included = data.filter((item) => item.id === parseInt(params.id))[0];
+    if (included) {
+      setIsFav(true);
+    }
+  };
 
   return (
     <div className={classes.root}>
       {property ? (
         <Paper className={classes.paper}>
+          <Link to="/map">
+            <Button>Back To Map</Button>
+          </Link>
           <div>
             <Typography>{property.address}</Typography>
             <Typography>Boston, MA {property.zip}</Typography>
             <Button
               className={classes.iconButton}
+              disabled={isFav ? false : true}
               onClick={(e) => {
                 console.log("clicked");
                 console.log(e);
-                setIconToggle(addFav(property.id));
-                console.log(iconToggle);
+                addFav(params.id);
+                setIconToggle((prev) => !prev);
               }}
             >
-              {iconToggle ? <StarIcon /> : <StarBorderIcon />}
+              {isFav ? <StarIcon /> : <StarBorderIcon />}
             </Button>
           </div>
           {/* <img src={propertyImage} /> */}

@@ -140,7 +140,11 @@ export default function MainContainer({ loggedIn }) {
           <Favorites loggedIn={loggedIn} />
         </Route>
         <Route exact path="/property/:id">
-          <MoreDetails properties={properties} addFav={addFav} />
+          <MoreDetails
+            properties={properties}
+            addFav={addFav}
+            loggedIn={loggedIn}
+          />
         </Route>
         <Route exact path="/">
           <SearchScreen
