@@ -24,7 +24,7 @@ export default function NavLinks(props) {
   const loggedInOptions = (
     <div className={classes.navlinks}>
       <Link className={classes.links} to="/">
-        <Button className={classes.buttons}>Home</Button>
+        <Button className={classes.buttons}>Search</Button>
       </Link>
       <Link className={classes.links} to="/map">
         <Button className={classes.buttons}>Map</Button>
