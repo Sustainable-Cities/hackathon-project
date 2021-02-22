@@ -64,12 +64,10 @@ export default function Search({
   const handleClick = () => {
     setMoreFiltersToggle((prev) => !prev);
   };
-  const deleteChip = (e) => {
-    const { name } = e.target;
-    console.log(e.target.name);
+  const deleteChip = (e, index) => {
     setFilters((prevState) => ({
       ...prevState,
-      [name]: "",
+      [filterKeys[index]]: "",
     }));
   };
 
@@ -97,7 +95,6 @@ export default function Search({
         }}
       />
       {filterValues.map((item, index) => {
-        console.log(filterKeys[index]);
         return item.length > 0 ? (
           <Chip
             key={(item, index)}
