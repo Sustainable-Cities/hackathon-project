@@ -7,6 +7,7 @@ export default function Map({
   filters,
   setFilters,
   handleFilter,
+  addFav,
 }) {
   return (
     <div>
@@ -15,7 +16,7 @@ export default function Map({
         setFilters={setFilters}
         handleFilter={handleFilter}
       />
-      <GoogleApiWrapper markers={filteredProperties} />
+      <GoogleApiWrapper markers={filteredProperties} addFav={addFav} />
     </div>
   );
 }

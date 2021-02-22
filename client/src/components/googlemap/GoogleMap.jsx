@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
+import PropertyCard from "../propertycard/PropertyCard";
 
 const mapStyles = {
   width: "100vw",
@@ -7,7 +8,7 @@ const mapStyles = {
 };
 
 export function GoogleMap(props) {
-  const { markers } = props;
+  const { markers, addFav } = props;
   const [activeMarker, setActiveMarker] = useState({});
   const [selectedPlace, setSelectedPlace] = useState({});
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
@@ -57,9 +58,13 @@ export function GoogleMap(props) {
         visible={showingInfoWindow}
         onClose={onClose}
       >
-        <div>
-          <h4>{selectedPlace.name}</h4>
-        </div>
+        <>
+          <PropertyCard
+            marker={selectedPlace}
+            markers={markers}
+            addFav={addFav}
+          />
+        </>
       </InfoWindow>
     </Map>
   );
