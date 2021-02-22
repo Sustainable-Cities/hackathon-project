@@ -50,7 +50,7 @@ function App() {
           </Route>
           <Route path="/">
             {loggedIn ? (
-              <Home />
+              <Home loggedIn={loggedIn} />
             ) : (
               <SignIn setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
             )}

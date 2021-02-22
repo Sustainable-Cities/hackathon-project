@@ -1,4 +1,4 @@
-const { Favorites } = require("../models");
+const { Favorites, Property } = require("../models");
 
 const CreateFav = async (req, res) => {
   try {
@@ -25,6 +25,7 @@ const GetFavs = async (req, res) => {
   try {
     const favs = await Favorites.findAll({
       where: { user_id: parseInt(req.params.user_id) },
+      include: [{ model: Property }],
     });
     res.send(favs);
   } catch (error) {

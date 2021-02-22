@@ -3,6 +3,7 @@ import ApiClient from "./ApiClient";
 export const __GetFavs = async (userId) => {
   try {
     const res = await ApiClient.get(`/fav/${userId}`);
+    // console.log(res.data);
     return res.data;
   } catch (error) {
     throw error;
