@@ -18,6 +18,10 @@ export default function MainContainer({ loggedIn }) {
     energyFromElectricity: "",
   });
 
+  const addFav = (propId) => {
+    //use AddFav service api call
+  };
+
   const searchResults = properties.filter(
     (item) => {
       const {
@@ -126,6 +130,7 @@ export default function MainContainer({ loggedIn }) {
             filters={filters}
             setFilters={setFilters}
             handleFilter={handleFilter}
+            addFav={addFav}
           />
         </Route>
         <Route exact path="/favorites">
