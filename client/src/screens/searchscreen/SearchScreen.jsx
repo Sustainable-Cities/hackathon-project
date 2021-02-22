@@ -60,17 +60,17 @@ const propSizeArr = [
   "0 - 40000.0",
   "40000.0 - 70000.0",
   "70000.0 - 150000.0",
-  "1500000.0 and above",
+  "1500000.0 - 5000000",
 ];
 
 const energyUsage = [
   "0 - 165000.0",
   "165000.0 - 500000.0",
   "500000.0 - 1600000.0",
-  "1600000.0 and above",
+  "1600000.0 and 5000000",
 ];
 
-const totalCarbon = ["0 - 3.0", "3.0 - 5.0", "5.0 - 7.0", "7.0 and above"];
+const totalCarbon = ["0 - 3.0", "3.0 - 5.0", "5.0 - 7.0", "7.0 - 10"];
 
 const percentElec = ["0 - 25%", "25% - 50%", "50% - 75%", "75% - 100%"];
 
@@ -152,8 +152,8 @@ export default function SearchScreen({
               value={filters.hasRenewables}
               onChange={(e) => handleFilter(e)}
             >
-              <MenuItem value="Y">Yes</MenuItem>
-              <MenuItem value="N">No</MenuItem>
+              <MenuItem value="y">Yes</MenuItem>
+              <MenuItem value="n">No</MenuItem>
             </Select>
           </div>
           <div>
