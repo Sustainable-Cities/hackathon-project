@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, withRouter } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { mainTheme } from "./styles/MaterialUITheme";
 import Layout from "./components/shared/layout/Layout";
@@ -18,12 +18,24 @@ function App() {
     history.push("/");
   };
   useEffect(() => {
-    const handleVerify = async () => {
-      const userData = await __CheckSession();
-      setLoggedIn(userData);
-    };
-    handleVerify();
+    verifyTokenValid();
   }, []);
+
+  const verifyTokenValid = async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const session = await __CheckSession();
+        setLoggedIn(session.user);
+        history.push("/");
+      } catch (error) {
+        localStorage.clear();
+        setLoggedIn();
+      }
+    } else {
+      setLoggedIn();
+    }
+  };
 
   return (
     <ThemeProvider theme={mainTheme}>
@@ -49,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
