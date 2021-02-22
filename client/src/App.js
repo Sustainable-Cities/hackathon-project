@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, withRouter } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { mainTheme } from "./styles/MaterialUITheme";
 import Layout from "./components/shared/layout/Layout";
@@ -49,4 +49,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
