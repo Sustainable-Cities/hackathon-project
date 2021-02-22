@@ -45,10 +45,11 @@ export default function PropertyCard(props) {
           <Typography variant="p">Boston, MA {property.zip}</Typography>
         </div>
         <Button
+          disabled
           className={classes.iconButton}
           onClick={(e) => {
-            console.log("clicked");
-            console.log(e);
+            // console.log("clicked");
+            // console.log(e);
             // setIconToggle(addFav(property.id));
             // console.log(iconToggle);
           }}

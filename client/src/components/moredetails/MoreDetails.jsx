@@ -39,12 +39,16 @@ export default function MoreDetails(props) {
 
   useEffect(() => {
     GetFavs();
+    console.log("gotem");
   }, [iconToggle]);
 
   // API CALL TO GET FAVS USING USER ID
   const GetFavs = async () => {
     const data = await __GetFavs(loggedIn.id);
-    const included = data.filter((item) => item.id === parseInt(params.id))[0];
+    console.log(data);
+    const included = data.find(
+      (item) => item.property_id === parseInt(params.id)
+    );
     if (included) {
       setIsFav(true);
     }
@@ -62,10 +66,8 @@ export default function MoreDetails(props) {
             <Typography>Boston, MA {property.zip}</Typography>
             <Button
               className={classes.iconButton}
-              disabled={isFav ? false : true}
+              disabled={isFav}
               onClick={(e) => {
-                console.log("clicked");
-                console.log(e);
                 addFav(params.id);
                 setIconToggle((prev) => !prev);
               }}
