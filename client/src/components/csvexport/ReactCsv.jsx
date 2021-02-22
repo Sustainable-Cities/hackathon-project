@@ -17,7 +17,7 @@ const ExportReactCSV = ({ data }) => {
     { label: "ghg intensity", key: "ghg_intesity" },
     { label: "onsite renewable kwh", key: "onsite_renewable_kwh" },
   ];
-  console.log(data);
+
   return (
     <Button>
       <CSVLink data={data} headers={headers}>
