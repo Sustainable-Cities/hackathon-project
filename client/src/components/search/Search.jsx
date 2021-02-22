@@ -79,7 +79,7 @@ export default function Search({
         name="address"
         variant="outlined"
         onChange={handleFilter}
-        value={filters.address}
+        // value={filters.address}
         placeholder="Search by address"
         InputProps={{
           endAdornment: (

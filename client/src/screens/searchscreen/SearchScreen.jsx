@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme) => ({
   color: {
@@ -12,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    height: "400px",
-    width: "990px",
+    height: "50%",
+    width: "75%",
     borderRadius: "50px",
     background: "white",
     marginTop: "2em",
@@ -37,27 +41,167 @@ const useStyles = makeStyles((theme) => ({
     height: "1.5em",
     width: "2em",
   },
+  selectInput: {
+    background: "#F5F5F5",
+    height: "5vh",
+    borderRadius: "20px",
+    width: "25vw",
+  },
+  selectContainer: {
+    justifySelf: "center",
+    alignSelf: "center",
+    display: "grid",
+    gridTemplateAreas: `'1 2' '3 4' '5 6'`,
+    margin: "1em 0 0 6em",
+  },
 }));
 
-export default function SearchScreen() {
-  const classes = useStyles();
-  const [search, setSearch] = useState("");
+const propSizeArr = [
+  "0 - 40000.0",
+  "40000.0 - 70000.0",
+  "70000.0 - 150000.0",
+  "1500000.0 - 5000000",
+];
 
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
+const energyUsage = [
+  "0 - 165000.0",
+  "165000.0 - 500000.0",
+  "500000.0 - 1600000.0",
+  "1600000.0 and 5000000",
+];
+
+const totalCarbon = ["0 - 3.0", "3.0 - 5.0", "5.0 - 7.0", "7.0 - 10"];
+
+const percentElec = ["0 - 25%", "25% - 50%", "50% - 75%", "75% - 100%"];
+
+export default function SearchScreen({
+  properties,
+  filteredProperties,
+  setFilteredProperties,
+  filters,
+  handleFilter,
+}) {
+  const classes = useStyles();
+
   return (
     <div className={classes.color}>
       <form className={classes.form}>
         <div className={classes.title}>Find a Property</div>
-        <input
-          id="search"
-          onChange={handleChange}
-          // value="search"
-          placeholder="Enter an address"
+        <TextField
+          margin="dense"
           className={classes.text}
+          name="address"
+          variant="outlined"
+          onChange={handleFilter}
+          value={filters.address}
+          placeholder="Search by address"
+          InputProps={{
+            endAdornment: (
+              <SearchIcon
+                style={{
+                  boxShadow: "inset 0 1px 2px rgba(0,0,0,.39)",
+                  borderRadius: "10px",
+                  width: "50px",
+                }}
+              />
+            ),
+            style: { height: "100%", padding: "0 14px", borderRadius: "20px" },
+          }}
         />
-        <SearchIcon className={classes.search} />
+        <div className={classes.selectContainer}>
+          <div>
+            <InputLabel id="propType">Property Type</InputLabel>
+            <Select
+              labelId="propType"
+              id="select"
+              placeholder="Property Type"
+              className={classes.selectInput}
+              variant="outlined"
+              name="propertyType"
+              value={filters.propertyType}
+              onChange={(e) => handleFilter(e)}
+            >
+              <MenuItem>fads</MenuItem>
+              <MenuItem>fadqrs</MenuItem>
+              <MenuItem>fadfdss</MenuItem>
+              <MenuItem>faaweds</MenuItem>
+            </Select>
+          </div>
+          <div>
+            <InputLabel>Property Size</InputLabel>
+            <Select
+              placeholder="Property Size"
+              className={classes.selectInput}
+              variant="outlined"
+              name="propertyType"
+              value={filters.propertySize}
+              onChange={(e) => handleFilter(e)}
+            >
+              {propSizeArr.map((item) => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </div>
+          <div>
+            <InputLabel>Has Renewables</InputLabel>
+            <Select
+              placeholder="Has Renewables"
+              className={classes.selectInput}
+              variant="outlined"
+              name="propertyType"
+              value={filters.hasRenewables}
+              onChange={(e) => handleFilter(e)}
+            >
+              <MenuItem value="y">Yes</MenuItem>
+              <MenuItem value="n">No</MenuItem>
+            </Select>
+          </div>
+          <div>
+            <InputLabel>Total Energy Usage</InputLabel>
+            <Select
+              placeholder="Energy Usage"
+              className={classes.selectInput}
+              variant="outlined"
+              name="propertyType"
+              value={filters.totalEnergyUsage}
+              onChange={(e) => handleFilter(e)}
+            >
+              {energyUsage.map((item) => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </div>
+          <div>
+            <InputLabel>Total Carbon Emmissions</InputLabel>
+            <Select
+              placeholder="Carbon Emmissions"
+              className={classes.selectInput}
+              variant="outlined"
+              name="propertyType"
+              value={filters.totalCarbonEmissions}
+              onChange={(e) => handleFilter(e)}
+            >
+              {totalCarbon.map((item) => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </div>
+          <div>
+            <InputLabel>% Energy From Electricity</InputLabel>
+            <Select
+              placeholder="% Energy From Electricity"
+              className={classes.selectInput}
+              variant="outlined"
+              name="propertyType"
+              value={filters.energyFromElectricity}
+              onChange={(e) => handleFilter(e)}
+            >
+              {percentElec.map((item) => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </div>
+        </div>
       </form>
     </div>
   );
