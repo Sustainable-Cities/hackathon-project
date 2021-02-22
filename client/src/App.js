@@ -18,12 +18,24 @@ function App() {
     history.push("/");
   };
   useEffect(() => {
-    const handleVerify = async () => {
-      const userData = await __CheckSession();
-      setLoggedIn(userData);
-    };
-    handleVerify();
+    verifyTokenValid();
   }, []);
+
+  const verifyTokenValid = async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const session = await __CheckSession();
+        setLoggedIn(session.user);
+        history.push("/");
+      } catch (error) {
+        localStorage.clear();
+        setLoggedIn();
+      }
+    } else {
+      setLoggedIn();
+    }
+  };
 
   return (
     <ThemeProvider theme={mainTheme}>
