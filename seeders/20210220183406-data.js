@@ -4,7 +4,7 @@ const { geocodeAddress } = require("../geocoding");
 
 const getLatLong = async (address) => {
   const geoCoded = await geocodeAddress(address);
-  // console.log(geoCoded);
+  console.log(geoCoded);
   if (geoCoded.length > 0) {
     return { lat: geoCoded[0].latitude, lng: geoCoded[0].longitude };
   }
