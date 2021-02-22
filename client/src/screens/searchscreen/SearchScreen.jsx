@@ -7,6 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   color: {
@@ -90,7 +91,7 @@ const energyUsage = [
   "1600000.0 and 5000000",
 ];
 
-const totalCarbon = ["0 - 3.0", "3.0 - 5.0", "5.0 - 7.0", "7.0 - 10"];
+const totalCarbon = ["0 - 3.0", "3.0 - 5.0", "5.0 - 7.0", "7.0 - 20"];
 
 const percentElec = ["0 - 25%", "25% - 50%", "50% - 75%", "75% - 100%"];
 
@@ -110,7 +111,7 @@ export default function SearchScreen({
   };
 
   return (
-    <div className={classes.color}>    
+    <div className={classes.color}>
       <form onSubmit={onSubmit} className={classes.form}>
         <Typography className={classes.title}>Find a Property</Typography>
         <TextField
@@ -123,7 +124,7 @@ export default function SearchScreen({
           placeholder="Search by address"
           InputProps={{
             endAdornment: (
-              <button type="submit">
+              <Button type="submit">
                 <SearchIcon
                   style={{
                     boxShadow: "inset 0 1px 2px rgba(0,0,0,.39)",
@@ -131,7 +132,7 @@ export default function SearchScreen({
                     width: "50px",
                   }}
                 />
-              </button>
+              </Button>
             ),
             style: { height: "100%", padding: "0 14px", borderRadius: "20px" },
           }}
