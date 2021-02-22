@@ -39,8 +39,9 @@ export default function Favorites({ loggedIn }) {
   // API CALL TO GET FAVS USING USER ID
   const GetFavs = async () => {
     const data = await __GetFavs(loggedIn.id);
+    console.log(data);
     data.forEach((el) => {
-      setFavs([...favs, el.Property]);
+      setFavs((prev) => [...prev, el.Property]);
     });
   };
 
