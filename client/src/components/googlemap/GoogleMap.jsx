@@ -3,7 +3,7 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 
 const mapStyles = {
   width: "100vw",
-  height: "90%",
+  height: "92vh",
 };
 
 export function GoogleMap(props) {
@@ -14,8 +14,8 @@ export function GoogleMap(props) {
   const { google } = props;
 
   const mapTypeControlOptions = {
-    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-    position: google.maps.ControlPosition.BOTTOM_LEFT,
+    // style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+    position: google.maps.ControlPosition.RIGHT_TOP,
   };
 
   const onMarkerClick = (props, marker, e) => {
