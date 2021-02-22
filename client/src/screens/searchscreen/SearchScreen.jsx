@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    height: "400px",
-    width: "990px",
+    height: "50%",
+    width: "75%",
     borderRadius: "50px",
     background: "white",
     marginTop: "2em",
