@@ -8,6 +8,20 @@ import { __GetProperties } from "../../services/PropertiesServices";
 export default function MainContainer({ loggedIn }) {
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
+  const [filters, setFilters] = useState({
+    address: "",
+    propertySize: "",
+    propertyType: "",
+    hasRenewables: "",
+    totalCarbonEmissions: "",
+    totalEnergyUsage: "",
+    energyFromElectricity: "",
+  });
+
+  const searchResults = properties.filter(
+    (item) => {}
+    // item.address.toLowerCase().includes(search.toLowerCase())
+  );
 
   //API CALLS GO HERE
   const fetchProperties = async () => {
@@ -28,6 +42,8 @@ export default function MainContainer({ loggedIn }) {
             properties={properties}
             filteredProperties={filteredProperties}
             setFilteredProperties={setFilteredProperties}
+            filters={filters}
+            setFilters={setFilters}
           />
         </Route>
         <Route exact path="/favorites">
@@ -38,6 +54,8 @@ export default function MainContainer({ loggedIn }) {
             properties={properties}
             filteredProperties={filteredProperties}
             setFilteredProperties={setFilteredProperties}
+            filters={filters}
+            setFilters={setFilters}
           />
         </Route>
       </Switch>
