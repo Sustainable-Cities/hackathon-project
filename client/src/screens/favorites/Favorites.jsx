@@ -3,6 +3,7 @@ import { __GetFavs } from "../../services/FavServices";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import ReactCsv from "../../components/csvexport/ReactCsv";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   favs: {
@@ -38,8 +39,9 @@ export default function Favorites({ loggedIn }) {
   // API CALL TO GET FAVS USING USER ID
   const GetFavs = async () => {
     const data = await __GetFavs(loggedIn.id);
+    console.log(data);
     data.forEach((el) => {
-      setFavs([...favs, el.Property]);
+      setFavs((prev) => [...prev, el.Property]);
     });
   };
 
@@ -59,6 +61,12 @@ export default function Favorites({ loggedIn }) {
                   <Typography>Property Type: {el.prop_type}</Typography>
                   <Typography>{el.ranking}</Typography>
                   <Typography>{el.area_sqft} area square feet</Typography>
+                  <Link
+                    to={`/property/${el.id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Typography>More Details</Typography>
+                  </Link>
                 </div>
               </form>
             ))
