@@ -14,7 +14,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     let arr = [];
     let val = Object.values(json);
-    for (let i = 1660; i < 1700; i++) {
+    for (let i = 1700; i < 1740; i++) {
       let obj = JSON.parse(val[i]);
       const latLong = await getLatLong(obj.address);
       arr.push({
