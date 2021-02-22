@@ -4,7 +4,7 @@ const { geocodeAddress } = require("../geocoding");
 
 const getLatLong = async (address) => {
   const geoCoded = await geocodeAddress(address);
-  console.log(geoCoded);
+  // console.log(geoCoded);
   if (geoCoded.length > 0) {
     return { lat: geoCoded[0].latitude, lng: geoCoded[0].longitude };
   }
@@ -14,7 +14,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     let arr = [];
     let val = Object.values(json);
-    for (let i = 0; i < 20; i++) {
+    for (let i = 20; i < 60; i++) {
       let obj = JSON.parse(val[i]);
       const latLong = await getLatLong(obj.address);
       arr.push({
