@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Map from "../../components/map/Map";
+import MoreDetails from "../../components/moredetails/MoreDetails";
 import Favorites from "../../screens/favorites/Favorites";
 import SearchScreen from "../../screens/searchscreen/SearchScreen";
 import { __CreateFav } from "../../services/FavServices";
@@ -138,7 +139,10 @@ export default function MainContainer({ loggedIn }) {
         <Route exact path="/favorites">
           <Favorites loggedIn={loggedIn} />
         </Route>
-        <Route path="/">
+        <Route exact path="/property/:id">
+          <MoreDetails properties={properties} addFav={addFav} />
+        </Route>
+        <Route exact path="/">
           <SearchScreen
             properties={properties}
             filteredProperties={filteredProperties}

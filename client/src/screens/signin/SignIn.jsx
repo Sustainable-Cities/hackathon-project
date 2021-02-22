@@ -59,7 +59,7 @@ const SignIn = ({ loggedIn, setLoggedIn }) => {
     const data = await __LoginUser(formState);
     localStorage.setItem("token", data.token);
     setLoggedIn(data.user);
-    history.push("/home");
+    history.push("/");
 
     setFormState(initialState);
   };

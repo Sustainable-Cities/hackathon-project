@@ -27,7 +27,7 @@ function App() {
       try {
         const session = await __CheckSession();
         setLoggedIn(session.user);
-        history.push("/");
+        // history.push("/");
       } catch (error) {
         localStorage.clear();
         setLoggedIn();
