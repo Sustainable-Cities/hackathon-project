@@ -19,17 +19,12 @@ export const __LoginUser = async (form) => {
 };
 
 export const __CheckSession = async () => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    ApiClient.defaults.headers.common.authorization = `Bearer ${token}`;
-    try {
-      const res = await ApiClient.get("/users/refresh/session");
-      return res.data;
-    } catch (error) {
-      throw error;
-    }
+  try {
+    const res = await ApiClient.get("/user/refresh/session");
+    return res.data;
+  } catch (error) {
+    throw error;
   }
-  return null;
 };
 
 export const __removeToken = () => {
