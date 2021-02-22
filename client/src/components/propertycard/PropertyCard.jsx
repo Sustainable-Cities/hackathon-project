@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarIcon from "@material-ui/icons/Star";
@@ -56,7 +55,13 @@ export default function PropertyCard(props) {
         >
           {iconToggle ? <StarIcon /> : <StarBorderIcon />}
         </Button>
-        <Link className={classes.moreDeets} href={`/property/${property.id}`}>
+        <Link
+          className={classes.moreDeets}
+          href={`/property/${property.id}`}
+          // onClick={(e) => {
+          //   e.preventDefault();
+          // }}
+        >
           More Details
         </Link>
       </div>
