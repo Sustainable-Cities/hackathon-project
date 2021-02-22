@@ -18,7 +18,7 @@ module.exports = {
       let obj = JSON.parse(val[i]);
       const latLong = await getLatLong(obj.address);
       arr.push({
-        ranking: obj.customer_rank,
+        ranking: obj.customer_BTU_rank,
         owner_name: obj.owner,
         lat: latLong ? latLong.lat : null,
         lng: latLong ? latLong.lng : null,

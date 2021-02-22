@@ -29,6 +29,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const propArr = [
+  "Multifamily Housing",
+  "Office",
+  "Education - School",
+  "Government Facility",
+  "Hotel",
+  "Storage Facility",
+  "Residence Hall/Dormitory",
+  "Retail Store",
+  "Supermarket/Grocery Store",
+  "Manufacturing/Industrial Plant",
+  "Mixed Use Property",
+  "Mall",
+  "Dining",
+  "Other - Lodging/Residential",
+  "Other",
+];
+
 const propSizeArr = [
   "0 - 40000.0",
   "40000.0 - 70000.0",
@@ -43,7 +61,7 @@ const energyUsage = [
   "1600000.0 and 5000000",
 ];
 
-const totalCarbon = ["0 - 3.0", "3.0 - 5.0", "5.0 - 7.0", "7.0 - 10"];
+const totalCarbon = ["0 - 3.0", "3.0 - 5.0", "5.0 - 7.0", "7.0 - 20"];
 
 const percentElec = ["0 - 25%", "25% - 50%", "50% - 75%", "75% - 100%"];
 
@@ -62,10 +80,9 @@ function FiltersMenu({ handleFilter, filters }) {
           value={filters.propertyType}
           onChange={(e) => handleFilter(e)}
         >
-          <MenuItem>fads</MenuItem>
-          <MenuItem>fadqrs</MenuItem>
-          <MenuItem>fadfdss</MenuItem>
-          <MenuItem>faaweds</MenuItem>
+          {propArr.map((item) => (
+            <MenuItem value={item}>{item}</MenuItem>
+          ))}
         </Select>
       </div>
       <div className={classes.selectContainer}>
