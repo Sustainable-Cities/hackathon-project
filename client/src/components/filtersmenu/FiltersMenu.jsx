@@ -34,6 +34,22 @@ export default function FiltersMenu({ handleFilter, filters }) {
   return (
     <div className={classes.menu}>
       <div className={classes.selectContainer}>
+        <Select
+          placeholder="Property Type"
+          className={classes.selectInput}
+          variant="outlined"
+          name="propertyType"
+          value={filters.propertyType}
+          onChange={(e) => handleFilter(e)}
+        ></Select>
+        <Select
+          placeholder="Property Size"
+          className={classes.selectInput}
+          variant="outlined"
+          value={filters.propertySize}
+          name="propertySize"
+          onChange={(e) => handleFilter(e)}
+        ></Select>
         <InputLabel id="has-renewables-dropdown-label">
           Has Renewables
         </InputLabel>
@@ -47,8 +63,8 @@ export default function FiltersMenu({ handleFilter, filters }) {
           // value={filters.hasRenewables}
           onChange={(e) => handleFilter(e)}
         >
-          <MenuItem value={true}>True</MenuItem>
-          <MenuItem value={false}>False</MenuItem>
+          <MenuItem value={"y"}>Yes</MenuItem>
+          <MenuItem value={"n"}>No</MenuItem>
         </Select>
       </div>
       <div>

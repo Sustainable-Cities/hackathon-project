@@ -4,14 +4,16 @@ import Search from "../search/Search";
 
 export default function Map({
   filteredProperties,
-  setFilteredProperties,
-  properties,
+  filters,
+  setFilters,
+  handleFilter,
 }) {
   return (
     <div>
       <Search
-        properties={properties}
-        setFilteredProperties={setFilteredProperties}
+        filters={filters}
+        setFilters={setFilters}
+        handleFilter={handleFilter}
       />
       <GoogleApiWrapper markers={filteredProperties} />
     </div>
