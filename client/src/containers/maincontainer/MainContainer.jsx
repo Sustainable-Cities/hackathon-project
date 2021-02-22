@@ -9,7 +9,7 @@ export default function MainContainer({ loggedIn }) {
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [filters, setFilters] = useState({
-    address: "",
+    address: "41 Egremont Rd",
     propertySize: "",
     propertyType: "",
     hasRenewables: "",
@@ -22,6 +22,14 @@ export default function MainContainer({ loggedIn }) {
     (item) => {}
     // item.address.toLowerCase().includes(search.toLowerCase())
   );
+
+  const handleFilter = (e) => {
+    const { name, value } = e.target;
+    setFilters((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   //API CALLS GO HERE
   const fetchProperties = async () => {
@@ -44,6 +52,7 @@ export default function MainContainer({ loggedIn }) {
             setFilteredProperties={setFilteredProperties}
             filters={filters}
             setFilters={setFilters}
+            handleFilter={handleFilter}
           />
         </Route>
         <Route exact path="/favorites">
@@ -55,7 +64,7 @@ export default function MainContainer({ loggedIn }) {
             filteredProperties={filteredProperties}
             setFilteredProperties={setFilteredProperties}
             filters={filters}
-            setFilters={setFilters}
+            handleFilter={handleFilter}
           />
         </Route>
       </Switch>
