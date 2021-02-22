@@ -72,6 +72,7 @@ const propArr = [
   "Manufacturing/Industrial Plant",
   "Mixed Use Property",
   "Mall",
+  "Medical Facility",
   "Dining",
   "Other - Lodging/Residential",
   "Other",

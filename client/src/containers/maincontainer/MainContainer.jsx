@@ -31,9 +31,7 @@ export default function MainContainer({ loggedIn }) {
       } = filters;
 
       if (address.length > 0) {
-        return item.address
-          .toLowerCase()
-          .includes(filters.address.toLowerCase());
+        return item.address.toLowerCase().includes(address.toLowerCase());
       }
       if (propertySize.length > 0) {
         const lower = parseInt(propertySize.split(" ")[0]);
@@ -47,6 +45,7 @@ export default function MainContainer({ loggedIn }) {
       }
       if (propertyType.length > 0) {
         //return items that match propertyType, general prop types !!
+        if (propertyType === item.prop_type) return item;
       }
       if (hasRenewables.length > 0) {
         return hasRenewables === "y"
