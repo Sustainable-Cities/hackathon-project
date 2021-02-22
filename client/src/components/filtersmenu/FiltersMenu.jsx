@@ -81,8 +81,10 @@ function FiltersMenu({ handleFilter, filters }) {
           value={filters.propertyType}
           onChange={(e) => handleFilter(e)}
         >
-          {propArr.map((item) => (
-            <MenuItem value={item}>{item}</MenuItem>
+          {propArr.map((item, i) => (
+            <MenuItem key={i} value={item}>
+              {item}
+            </MenuItem>
           ))}
         </Select>
       </div>
@@ -97,8 +99,10 @@ function FiltersMenu({ handleFilter, filters }) {
           name="propertySize"
           onChange={(e) => handleFilter(e)}
         >
-          {propSizeArr.map((item) => (
-            <MenuItem value={item}>{item}</MenuItem>
+          {propSizeArr.map((item, i) => (
+            <MenuItem key={i} value={item}>
+              {item}
+            </MenuItem>
           ))}
         </Select>
       </div>
@@ -134,8 +138,10 @@ function FiltersMenu({ handleFilter, filters }) {
           value={filters.totalEnergyUsage}
           onChange={(e) => handleFilter(e)}
         >
-          {energyUsage.map((item) => (
-            <MenuItem value={item}>{item}</MenuItem>
+          {energyUsage.map((item, i) => (
+            <MenuItem key={i} value={item}>
+              {item}
+            </MenuItem>
           ))}
         </Select>
       </div>
@@ -151,8 +157,10 @@ function FiltersMenu({ handleFilter, filters }) {
           value={filters.totalCarbonEmissions}
           onChange={(e) => handleFilter(e)}
         >
-          {totalCarbon.map((item) => (
-            <MenuItem value={item}>{item}</MenuItem>
+          {totalCarbon.map((item, i) => (
+            <MenuItem key={i} value={item}>
+              {item}
+            </MenuItem>
           ))}
         </Select>
       </div>
@@ -170,8 +178,10 @@ function FiltersMenu({ handleFilter, filters }) {
           value={filters.energyFromElectricity}
           onChange={(e) => handleFilter(e)}
         >
-          {percentElec.map((item) => (
-            <MenuItem value={item}>{item}</MenuItem>
+          {percentElec.map((item, i) => (
+            <MenuItem key={i} value={item}>
+              {item}
+            </MenuItem>
           ))}
         </Select>
       </div>

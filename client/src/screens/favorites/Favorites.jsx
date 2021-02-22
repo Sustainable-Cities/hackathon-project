@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { __GetFavs } from "../../services/FavServices";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import ReactCsv from "../../components/csvexport/ReactCsv";
 
 const useStyles = makeStyles((theme) => ({
   favs: {
@@ -44,10 +45,11 @@ export default function Favorites({ loggedIn }) {
   return (
     <div className={classes.favs}>
       <h1>Your Favorites ({favs.length})</h1>
+      <ReactCsv data={favs} />
       <div className={classes.favContainer}>
         {favs.length > 0
-          ? favs.map((el) => (
-              <form className={classes.form}>
+          ? favs.map((el, i) => (
+              <form key={i} className={classes.form}>
                 <div className={classes.text}>
                   <Typography>{el.Property.prop_name}</Typography>
                   <Typography>
