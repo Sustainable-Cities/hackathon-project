@@ -46,7 +46,7 @@ const RefreshSession = async (req, res) => {
   try {
     const { token } = res.locals;
     const user = await User.findByPk(token.id, {
-      attributes: ["id"],
+      attributes: ["id", "user_name", "email"],
     });
     res.send({ user, status: "OK" });
   } catch (error) {
