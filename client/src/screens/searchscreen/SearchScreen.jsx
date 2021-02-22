@@ -133,7 +133,7 @@ export default function SearchScreen({
               placeholder="Property Size"
               className={classes.selectInput}
               variant="outlined"
-              name="propertyType"
+              name="propertySize"
               value={filters.propertySize}
               onChange={(e) => handleFilter(e)}
             >
@@ -148,7 +148,7 @@ export default function SearchScreen({
               placeholder="Has Renewables"
               className={classes.selectInput}
               variant="outlined"
-              name="propertyType"
+              name="hasRenewables"
               value={filters.hasRenewables}
               onChange={(e) => handleFilter(e)}
             >
@@ -162,7 +162,7 @@ export default function SearchScreen({
               placeholder="Energy Usage"
               className={classes.selectInput}
               variant="outlined"
-              name="propertyType"
+              name="totalEnergyUsage"
               value={filters.totalEnergyUsage}
               onChange={(e) => handleFilter(e)}
             >
@@ -177,7 +177,7 @@ export default function SearchScreen({
               placeholder="Carbon Emmissions"
               className={classes.selectInput}
               variant="outlined"
-              name="propertyType"
+              name="totalCarbonEmissions"
               value={filters.totalCarbonEmissions}
               onChange={(e) => handleFilter(e)}
             >
@@ -192,7 +192,7 @@ export default function SearchScreen({
               placeholder="% Energy From Electricity"
               className={classes.selectInput}
               variant="outlined"
-              name="propertyType"
+              name="energyFromElectricity"
               value={filters.energyFromElectricity}
               onChange={(e) => handleFilter(e)}
             >
