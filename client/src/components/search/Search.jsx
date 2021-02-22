@@ -7,6 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import Button from "@material-ui/core/Button";
 import FiltersMenu from "../filtersmenu/FiltersMenu";
+import Chip from "@material-ui/core/Chip";
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -43,23 +44,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Search({ properties, setFilteredProperties }) {
+export default function Search({
+  properties,
+  setFilteredProperties,
+  filters,
+  setFilters,
+}) {
   const classes = useStyles();
   const [search, setSearch] = useState("");
-  const [filters, setFilters] = useState({
-    propertySize: "",
-    propertyType: "",
-  });
   const [moreFiltersToggle, setMoreFiltersToggle] = useState(false);
 
-  const results = properties.filter((item) =>
-    item.address.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    setFilteredProperties(results);
-  };
+  // const handleSearch = (e) => {
+  //   setSearch(e.target.value);
+  //   setFilteredProperties(searchResults);
+  // };
 
   const handleFilter = (e) => {
     const { name, value } = e.target;
@@ -77,9 +75,10 @@ export default function Search({ properties, setFilteredProperties }) {
       <TextField
         margin="dense"
         className={classes.textInput}
+        name="address"
         variant="outlined"
-        onChange={handleSearch}
-        value={search}
+        onChange={handleFilter}
+        value={filters.address}
         placeholder="Search by address"
         InputProps={{
           endAdornment: (
@@ -94,7 +93,10 @@ export default function Search({ properties, setFilteredProperties }) {
           style: { height: "100%", padding: "0 14px", borderRadius: "20px" },
         }}
       />
-      <Select
+      {/* {Object.values(filters).map((item) => {
+        item.length > 0 ? <Chip /> : null;
+      }) */}
+      {/* <Select
         placeholder="Property Type"
         className={classes.selectInput}
         variant="outlined"
@@ -109,7 +111,7 @@ export default function Search({ properties, setFilteredProperties }) {
         value={filters.propertySize}
         name="propertySize"
         onChange={(e) => handleFilter(e)}
-      ></Select>
+      ></Select> */}
       <Button
         className={classes.button}
         onClick={handleClick}
