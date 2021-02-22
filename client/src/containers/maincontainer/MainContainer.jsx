@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Map from "../../components/map/Map";
 import Favorites from "../../screens/favorites/Favorites";
 import SearchScreen from "../../screens/searchscreen/SearchScreen";
+import { __CreateFav } from "../../services/FavServices";
 import { __GetProperties } from "../../services/PropertiesServices";
 
 export default function MainContainer({ loggedIn }) {
@@ -18,8 +19,9 @@ export default function MainContainer({ loggedIn }) {
     energyFromElectricity: "",
   });
 
-  const addFav = (propId) => {
-    //use AddFav service api call
+  const addFav = async (propId) => {
+    const resp = await __CreateFav(loggedIn.id, propId);
+    return resp;
   };
 
   const searchResults = properties.filter(
