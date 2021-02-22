@@ -5,6 +5,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   color: {
@@ -86,7 +87,7 @@ export default function SearchScreen({
   return (
     <div className={classes.color}>
       <form className={classes.form}>
-        <div className={classes.title}>Find a Property</div>
+        <Typography className={classes.title}>Find a Property</Typography>
         <TextField
           margin="dense"
           className={classes.text}
