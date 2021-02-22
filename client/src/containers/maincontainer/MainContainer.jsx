@@ -9,7 +9,7 @@ export default function MainContainer({ loggedIn }) {
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [filters, setFilters] = useState({
-    address: "41 Egremont Rd",
+    address: "",
     propertySize: "",
     propertyType: "",
     hasRenewables: "",
@@ -18,8 +18,80 @@ export default function MainContainer({ loggedIn }) {
     energyFromElectricity: "",
   });
 
+  console.log(properties);
+
   const searchResults = properties.filter(
-    (item) => {}
+    (item) => {
+      const {
+        address,
+        propertySize,
+        propertyType,
+        hasRenewables,
+        totalCarbonEmissions,
+        totalEnergyUsage,
+        energyFromElectricity,
+      } = filters;
+
+      if (address.length > 0) {
+        return item.address
+          .toLowerCase()
+          .includes(filters.address.toLowerCase());
+      }
+      if (propertySize.length > 0) {
+        const lower = parseInt(propertySize.split(" ")[0]);
+        const higher = parseInt(propertySize.split(" ")[2]);
+        if (
+          parseInt(item.area_sqft) >= lower &&
+          parseInt(item.area_sqft) <= higher
+        ) {
+          return item;
+        }
+      }
+      if (propertyType.length > 0) {
+        //return items that match propertyType, general prop types !!
+      }
+      if (hasRenewables.length > 0) {
+        return hasRenewables === "y"
+          ? parseInt(item.onsite_renewable_kwh) > 0
+          : parseInt(item.onsite_renewable_kwh) === 0;
+      }
+      if (totalCarbonEmissions.length > 0) {
+        //parse INTS
+        // look for items where totalCarbonEmissions is between range specified in string
+        const lower = parseInt(totalCarbonEmissions.split(" ")[0]);
+        const higher = parseInt(totalCarbonEmissions.split(" ")[2]);
+        if (
+          parseInt(item.ghg_intensity) >= lower &&
+          parseInt(item.ghg_intesity) <= higher
+        ) {
+          return item;
+        }
+      }
+      if (totalEnergyUsage.length > 0) {
+        //parse INTS
+        //look for items where etc... is between range in string
+        const lower = parseInt(totalEnergyUsage.split(" ")[0]);
+        const higher = parseInt(totalEnergyUsage.split(" ")[2]);
+        if (
+          parseInt(item.total_energy_usage_kbtu) >= lower &&
+          parseInt(item.total_energy_usage_kbtu) <= higher
+        ) {
+          return item;
+        }
+      }
+      if (energyFromElectricity.length > 0) {
+        //parse INTS
+        //look for items where etc... is between range in string
+        const lower = parseInt(energyFromElectricity.split(" ")[0]);
+        const higher = parseInt(energyFromElectricity.split(" ")[2]);
+        if (
+          parseInt(item.percentage_elec) >= lower &&
+          parseInt(item.percentage_elec) <= higher
+        ) {
+          return item;
+        }
+      }
+    }
     // item.address.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -41,6 +113,10 @@ export default function MainContainer({ loggedIn }) {
   useEffect(() => {
     fetchProperties();
   }, []);
+
+  useEffect(() => {
+    setFilteredProperties(searchResults);
+  }, [filters]);
 
   return (
     <>
