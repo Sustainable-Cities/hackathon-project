@@ -64,14 +64,18 @@ export default function MoreDetails(props) {
   const [isFav, setIsFav] = useState(false);
   const params = useParams();
   const history = useHistory();
+
   const property = properties.filter(
     (item) => item.id === parseInt(params.id)
   )[0];
-  // console.log(property);
+
+  const lat = property?.lat;
+  const long = property?.lng;
+  const api_key = process.env.REACT_APP_GOOGLEMAPS_KEY;
+  const imgUrl = `https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=hybrid&markers=color:red%7C${lat},${long}&key=${api_key}`;
 
   useEffect(() => {
     GetFavs();
-    console.log("gotem");
   }, [iconToggle]);
 
   // API CALL TO GET FAVS USING USER ID
@@ -115,7 +119,7 @@ export default function MoreDetails(props) {
             <img
               className={classes.propImg}
               alt={property.address}
-              src={propertyImage}
+              src={imgUrl}
             />
             <div className={classes.propInfo}>
               <Typography>
