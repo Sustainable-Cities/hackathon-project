@@ -10,7 +10,7 @@ const geocoder = NodeGeocoder(geocoderOptions);
 
 const geocodeAddress = async (address) => {
   if (address) {
-    const resp = await geocoder.geocode(address);
+    const resp = await geocoder.geocode(`${address}, Boston MA`);
     return resp;
   }
 };
