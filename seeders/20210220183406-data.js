@@ -26,7 +26,7 @@ module.exports = {
         prop_type: obj.property_type,
         prop_use: obj.property_uses,
         year_built: obj.year_built,
-        address: obj.address,
+        address: `${obj.address}, Boston MA`,
         zip: obj.ZIP,
         area_sqft: obj.gross_area_sqft,
         site_energy_usage_kbtu_sf: obj.site_energy_usage_kBTU_sf,
