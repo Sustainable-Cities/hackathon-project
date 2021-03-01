@@ -17,7 +17,7 @@ module.exports = {
       property_uses: {
         type: Sequelize.STRING,
       },
-      year_buit: {
+      year_built: {
         type: Sequelize.STRING,
       },
       address: {
@@ -35,7 +35,7 @@ module.exports = {
       gross_area_sqft: {
         type: Sequelize.STRING,
       },
-      site_energy_usage_btu_sf: {
+      site_energy_usage_kbtu_sf: {
         type: Sequelize.STRING,
       },
       total_site_energy_kbtu: {

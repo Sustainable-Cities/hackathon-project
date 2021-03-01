@@ -8,9 +8,9 @@ const geocoderOptions = {
 
 const geocoder = NodeGeocoder(geocoderOptions);
 
-const geocodeAddress = async (address) => {
+const geocodeAddress = async (address, zip) => {
   if (address) {
-    const resp = await geocoder.geocode(`${address}, Boston MA`);
+    const resp = await geocoder.geocode(`${address}, ${zip}`);
     return resp;
   }
 };
