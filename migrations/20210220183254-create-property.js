@@ -8,28 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      ranking: {
+      property_name: {
         type: Sequelize.STRING,
       },
-      owner_name: {
+      property_type: {
         type: Sequelize.STRING,
       },
-      lat: {
+      property_uses: {
         type: Sequelize.STRING,
       },
-      lng: {
-        type: Sequelize.STRING,
-      },
-      prop_name: {
-        type: Sequelize.STRING,
-      },
-      prop_type: {
-        type: Sequelize.STRING,
-      },
-      prop_use: {
-        type: Sequelize.STRING,
-      },
-      year_built: {
+      year_buit: {
         type: Sequelize.STRING,
       },
       address: {
@@ -38,22 +26,49 @@ module.exports = {
       zip: {
         type: Sequelize.STRING,
       },
-      area_sqft: {
+      gross_area_sqft: {
         type: Sequelize.STRING,
       },
-      site_energy_usage_kbtu_sf: {
+      site_energy_usage_btu_sf: {
         type: Sequelize.STRING,
       },
-      total_energy_usage_kbtu: {
+      total_site_energy_kbtu: {
         type: Sequelize.STRING,
       },
-      percentage_elec: {
+      percentage_electricity: {
         type: Sequelize.STRING,
       },
-      ghg_intensity: {
+      ghg_intensity_kgco2_sf: {
         type: Sequelize.STRING,
       },
       onsite_renewable_kwh: {
+        type: Sequelize.STRING,
+      },
+      kbtu_from_electric: {
+        type: Sequelize.STRING,
+      },
+      kwh_annual_usage: {
+        type: Sequelize.STRING,
+      },
+      kwh_daily_usage: {
+        type: Sequelize.STRING,
+      },
+      customer_btu_rank: {
+        type: Sequelize.STRING,
+      },
+      customer_sqft_rank: {
+        type: Sequelize.STRING,
+      },
+      customer_kwh_annual_rank: {
+        type: Sequelize.STRING,
+      },
+      customer_kwh_daily_rank: {
+        type: Sequelize.STRING,
+      },
+      customer_percent_electric_rank: {
+        type: Sequelize.STRING,
+      },
+      customer_emissions_rank: {
         type: Sequelize.STRING,
       },
       createdAt: {
