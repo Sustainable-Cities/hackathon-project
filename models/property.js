@@ -13,24 +13,30 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+
   Property.init(
     {
-      ranking: DataTypes.STRING,
-      owner_name: DataTypes.STRING,
-      lat: DataTypes.STRING,
-      lng: DataTypes.STRING,
-      prop_name: DataTypes.STRING,
-      prop_type: DataTypes.STRING,
-      prop_use: DataTypes.STRING,
+      property_name: DataTypes.STRING,
+      property_type: DataTypes.STRING,
+      property_uses: DataTypes.STRING,
       year_built: DataTypes.STRING,
       address: DataTypes.STRING,
       zip: DataTypes.STRING,
-      area_sqft: DataTypes.STRING,
-      site_energy_usage_kbtu_sf: DataTypes.STRING,
-      total_energy_usage_kbtu: DataTypes.STRING,
-      percentage_elec: DataTypes.STRING,
-      ghg_intensity: DataTypes.STRING,
-      onsite_renewable_kwh: DataTypes.STRING,
+      gross_area_sqft: DataTypes.STRING,
+      site_energy_usage_kBTU_sf: DataTypes.STRING,
+      total_site_energy_kBTU: DataTypes.STRING,
+      percentage_electricity: DataTypes.STRING,
+      ghg_intensity_kgCO2_sf: DataTypes.STRING,
+      onsite_renewable_kWh: DataTypes.STRING,
+      kbtu_from_electric: DataTypes.STRING,
+      kwh_annual_usage: DataTypes.STRING,
+      kwh_daily_usage: DataTypes.STRING,
+      customer_btu_rank: DataTypes.STRING,
+      customer_sqft_rank: DataTypes.STRING,
+      customer_kwh_annual_rank: DataTypes.STRING,
+      customer_kwh_daily_rank: DataTypes.STRING,
+      customer_percent_electric_rank: DataTypes.STRING,
+      customer_emissions_rank: DataTypes.STRING,
     },
     {
       sequelize,
