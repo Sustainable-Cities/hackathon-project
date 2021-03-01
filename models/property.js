@@ -22,6 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       year_built: DataTypes.STRING,
       address: DataTypes.STRING,
       zip: DataTypes.STRING,
+      lat: DataTypes.STRING,
+      lng: DataTypes.STRING,
       gross_area_sqft: DataTypes.STRING,
       site_energy_usage_kbtu_sf: DataTypes.STRING,
       total_site_energy_kbtu: DataTypes.STRING,

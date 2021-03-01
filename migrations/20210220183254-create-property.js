@@ -26,6 +26,12 @@ module.exports = {
       zip: {
         type: Sequelize.STRING,
       },
+      lat: {
+        type: Sequelize.STRING,
+      },
+      lng: {
+        type: Sequelize.STRING,
+      },
       gross_area_sqft: {
         type: Sequelize.STRING,
       },
