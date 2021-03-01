@@ -3,8 +3,9 @@ const json = require("../data.json");
 const { geocodeAddress } = require("../geocoding");
 
 const getLatLong = async (address, zip) => {
+  await timeout(500);
   const geoCoded = await geocodeAddress(address, zip);
-  console.log(geoCoded);
+  // console.log(geoCoded);
   if (geoCoded.length > 0) {
     return {
       lat: geoCoded[0].latitude,
@@ -12,6 +13,10 @@ const getLatLong = async (address, zip) => {
       address: geoCoded[0].formattedAddress,
     };
   }
+};
+
+const timeout = async (ms) => {
+  return await new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 module.exports = {
