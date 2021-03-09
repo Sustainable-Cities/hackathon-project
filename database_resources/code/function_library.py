@@ -118,6 +118,40 @@ def zip_fix(num):
     else:
         return num
 
+def type_ranker(num):
+    if num < 0.25:
+        num = 'Most Efficient for Building Type: Low Priority'
+        return num
+    elif num >= 0.25 and num < 0.5:
+        num = 'Moderately Efficient for Building Type: Moderate Priority'
+        return num
+    elif num >= 0.5 and num < 0.75:
+        num = 'Higher Energy use for Building Type: High Priority'
+        return num
+    elif num >= 0.75:
+        num = 'Energy Intensive for Building Type: Highest Priority'
+        return num
+    else:
+        num = 'Moderately Efficient for Building Type: Moderate Priority'
+        return num
+    
+def zip_ranker(num):
+    if num < 0.25:
+        num = 'Most Efficient for Zip Code: Low Priority'
+        return num
+    elif num >= 0.25 and num < 0.5:
+        num = 'Moderately Efficient for Zip Code: Moderate Priority'
+        return num
+    elif num >= 0.5 and num < 0.75:
+        num = 'Higher Energy use for Zip Code: High Priority'
+        return num
+    elif num >= 0.75:
+        num = 'Energy Intensive for Zip Code: Highest Priority'
+        return num
+    else:
+        num = 'Moderately Efficient for Zip Code: Moderate Priority'
+        return num
+
 def type_namer(name):
     '''
     Edge Case exhaustive method for condensing wide array of categories of Building Type feature:

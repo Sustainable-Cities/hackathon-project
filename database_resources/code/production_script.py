@@ -176,11 +176,18 @@ df['kWh_annual_usage'] = df['kBTU_from_electric'] / 3.412
 df['kWh_daily_usage'] = df['kWh_annual_usage'] / 365
 df['GHG_daily_intensity'] = df['GHG_intensity_kgCO2_sf'] / 365
 
+# Engineer percentiles grouped by different categories:
+df['kWh_by_type_percentile'] = df.groupby('property_type')[['kWh_annual_usage']].rank(pct=True)
+df['kWh_by_zip_percentile'] = df.groupby('ZIP')[['kWh_annual_usage']].rank(pct=True)
+
 '''
 Engineer with dynamic percentiles for ranking: Quartiles used as guidance in function:
 https://stackoverflow.com/questions/45330312/pandas-dataframe-apply-raises-typeerror-for-providing-too-many-arguments
 Possible adjustment of content of rank names for different features.
 '''
+
+df['customer_zipcode_rank'] = df['kWh_by_zip_percentile'].apply(zip_ranker).copy()
+df['customer_building_type_rank'] = df['kWh_by_type_percentile'].apply(type_ranker).copy()
 df['customer_BTU_rank'] = df['site_energy_usage_kBTU_sf'].apply(ranker,args=(['site_energy_usage_kBTU_sf'])).copy()
 df['customer_sqft_rank'] = df['gross_area_sqft'].apply(sqft_ranker,args=(['gross_area_sqft'])).copy()
 df['customer_kWh_annual_rank'] = df['kWh_annual_usage'].apply(ranker,args=(['kWh_annual_usage'])).copy()
